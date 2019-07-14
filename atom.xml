@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-13T14:20:03.858Z</updated>
+  <updated>2019-07-14T10:29:54.101Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,16 +17,30 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Test_my_site</title>
-    <link href="http://yoursite.com/2019/07/13/Test-my-site/"/>
-    <id>http://yoursite.com/2019/07/13/Test-my-site/</id>
-    <published>2019-07-13T14:20:03.000Z</published>
-    <updated>2019-07-13T14:20:03.858Z</updated>
+    <title>建立自己的个人博客</title>
+    <link href="http://yoursite.com/2019/07/14/%E5%BB%BA%E7%AB%8B%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://yoursite.com/2019/07/14/建立个人博客/</id>
+    <published>2019-07-14T09:56:31.000Z</published>
+    <updated>2019-07-14T10:29:54.101Z</updated>
     
     <summary type="html">
     
+      
+      
+        
+        
+          &lt;h1 id=&quot;分享自己实践过程中的体会&quot;&gt;&lt;a href=&quot;#分享自己实践过程中的体会&quot; class=&quot;headerlink&quot; title=&quot;分享自己实践过程中的体会&quot;&gt;&lt;/a&gt;分享自己实践过程中的体会&lt;/h1&gt;&lt;h2
+        
+      
+    
     </summary>
     
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
+    
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="实践" scheme="http://yoursite.com/tags/%E5%AE%9E%E8%B7%B5/"/>
     
   </entry>
   
