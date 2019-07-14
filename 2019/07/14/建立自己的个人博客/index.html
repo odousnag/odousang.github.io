@@ -117,7 +117,16 @@
 <meta property="og:image" content="http://yoursite.com/image/5.jfif">
 <meta property="og:image" content="http://yoursite.com/image/6.png">
 <meta property="og:image" content="http://yoursite.com/image/7.png">
-<meta property="og:updated_time" content="2019-07-14T12:25:23.635Z">
+<meta property="og:image" content="http://yoursite.com/image/8.png">
+<meta property="og:image" content="http://yoursite.com/image/9.png">
+<meta property="og:image" content="http://yoursite.com/image/10.png">
+<meta property="og:image" content="http://yoursite.com/image/11.png">
+<meta property="og:image" content="http://yoursite.com/image/12.png">
+<meta property="og:image" content="http://yoursite.com/image/13.png">
+<meta property="og:image" content="http://yoursite.com/image/14.png">
+<meta property="og:image" content="http://yoursite.com/image/15.png">
+<meta property="og:image" content="http://yoursite.com/image/16.png">
+<meta property="og:updated_time" content="2019-07-14T13:34:19.451Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="建立自己的个人博客">
 <meta name="twitter:description" content="分享自己实践过程中的体会第一次搭建自己的博客，对于大多数人来说都是有些兴奋和期待的，下面我来说说在搭建过程中具体的步骤，遇到的问题和如何去解决，遇到问题的请在下方评论或者私信邮箱，我会尽快回复的。 Github中创建一个仓库来存储博客内容 创建仓库点击头像隔壁的小下标箭头，New repository创建我们的仓库仓库的名字用：用户名.github.io例如我自己的个人博客：  Git 安装 下载">
@@ -409,7 +418,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1.3k</span>
+              <span title="本文字数">2.2k</span>
             </span>
           
 
@@ -421,7 +430,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">1 分钟</span>
+              <span title="阅读时长">2 分钟</span>
             </span>
           
 
@@ -487,10 +496,34 @@
 <li><p>测试<br> 我们可以新建一个博客文章</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo new “博客名字（随便取）”</span><br><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
-<p>然后就会出现一个网站 localhost:4000<br>打开后就会有我们博客的样子<br><img src="/image/7.png" alt="hexo 测试"></p>
+<p>然后就会出现一个网站 localhost:4000<br>打开后就会有我们博客的样子，下图是我修改过的配置<br><img src="/image/7.png" alt="hexo 测试"></p>
 </li>
 </ul>
+<h3 id="发布网站"><a href="#发布网站" class="headerlink" title="发布网站"></a>发布网站</h3><p>  在我们的blog根目录里面 有一个文件叫<strong>_config.yml</strong> ，这个文件被称为<strong>站点配置</strong><br>  <img src="/image/8.png" alt="发布网站"><br>  进入themes中，还有一个相同的文件，这个文件被叫做<strong>主题配置</strong><br>  <img src="/image/9.png" alt="发布网站"></p>
+<ul>
+<li><p>关联 Github<br>打开<strong>站点配置</strong>文件<strong>_config.yml</strong>拉到最后修改<br>deploy:<br>  type: git<br>  repo: 这里填入GitHub仓库的完整路径，记得加上 .git<br>  branch: master<br><strong>三个冒号后面都有一个空格</strong><br><img src="/image/10.png" alt="hexo 测试"><br>保存文件，然后我们回到blog目录，安装Git部署文件</p>
+</li>
+<li><p>部署 Hexo<br>按住shift加右键打开命令行，输入命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
+<p>然后，我们把缓存清除重新上传我们的文件，输入三条命令<br>注：第三条命令就是重新部署的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试<br>完成后我们打开我们Github上的仓库的settings<br><img src="/image/11.png" alt="hexo 测试"><br>找到GitHub Pages第一行<br><img src="/image/12.png" alt="hexo 测试"><br>图中的地址我改了我自己的，你看到你自己的点进去，就可以在网路上面访问了<br>到这一步其实已经算是成功了，绑定域名只是让我们地址好看点</p>
+</li>
+</ul>
+<h3 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h3><p>  这里我们要先购买域名，各大网站都会有域名出售，建议去阿里云购买</p>
+<ul>
+<li><p>解析 域名<br>我们先找到我们的域名，点进去解析<br><img src="/image/13.png" alt="域名 解析"><br>在这里我们要添加三条解析记录<br>192.30.252.153是GitHub的地址<br>第三个记录类型是CNAME，CNAME的记录值是：<strong>你的用户名.github.io</strong><br><img src="/image/14.png" alt="域名 解析"></p>
+</li>
+<li><p>设置 域名<br>我们返回我们的Github仓库，继续是进入settings，找到Github Pages<br>设置Custom domain，输入你的域名<br><img src="/image/15.png" alt="设置 域名"><br>保存后，我们找到文件夹，进入blog/source目录，创建一个文件输入自己的域名<br><img src="/image/16.png" alt="设置 域名">保存退出，回到我们的blog目录<br>打开我们的命令行，依次输入之前我们重新部署的命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试 域名<br>我们打开浏览器，输入你刚刚自己的个性化域名，就会直接进入你的个人博客</p>
+<p>这是我的个人博客，欢迎进行观看 博客：<a href="http://www.hewenhao.top/" target="_blank" rel="noopener">http://www.hewenhao.top/</a></p>
+</li>
+</ul>
+<h2 id="第一个博客的完成，感觉自己成就感满满的，下一步就慢慢完善自己的博客啦"><a href="#第一个博客的完成，感觉自己成就感满满的，下一步就慢慢完善自己的博客啦" class="headerlink" title="第一个博客的完成，感觉自己成就感满满的，下一步就慢慢完善自己的博客啦"></a>第一个博客的完成，感觉自己成就感满满的，下一步就慢慢完善自己的博客啦</h2>
       
     </div>
 
@@ -746,7 +779,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分享自己实践过程中的体会"><span class="nav-number">1.</span> <span class="nav-text">分享自己实践过程中的体会</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一次搭建自己的博客，对于大多数人来说都是有些兴奋和期待的，下面我来说说在搭建过程中具体的步骤，遇到的问题和如何去解决，遇到问题的请在下方评论或者私信邮箱，我会尽快回复的。"><span class="nav-number">1.1.</span> <span class="nav-text">第一次搭建自己的博客，对于大多数人来说都是有些兴奋和期待的，下面我来说说在搭建过程中具体的步骤，遇到的问题和如何去解决，遇到问题的请在下方评论或者私信邮箱，我会尽快回复的。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github中创建一个仓库来存储博客内容"><span class="nav-number">1.1.1.</span> <span class="nav-text">Github中创建一个仓库来存储博客内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-安装"><span class="nav-number">1.1.2.</span> <span class="nav-text">Git 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Node-js"><span class="nav-number">1.1.3.</span> <span class="nav-text">安装Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">1.1.4.</span> <span class="nav-text">安装Hexo</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分享自己实践过程中的体会"><span class="nav-number">1.</span> <span class="nav-text">分享自己实践过程中的体会</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一次搭建自己的博客，对于大多数人来说都是有些兴奋和期待的，下面我来说说在搭建过程中具体的步骤，遇到的问题和如何去解决，遇到问题的请在下方评论或者私信邮箱，我会尽快回复的。"><span class="nav-number">1.1.</span> <span class="nav-text">第一次搭建自己的博客，对于大多数人来说都是有些兴奋和期待的，下面我来说说在搭建过程中具体的步骤，遇到的问题和如何去解决，遇到问题的请在下方评论或者私信邮箱，我会尽快回复的。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github中创建一个仓库来存储博客内容"><span class="nav-number">1.1.1.</span> <span class="nav-text">Github中创建一个仓库来存储博客内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-安装"><span class="nav-number">1.1.2.</span> <span class="nav-text">Git 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Node-js"><span class="nav-number">1.1.3.</span> <span class="nav-text">安装Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">1.1.4.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布网站"><span class="nav-number">1.1.5.</span> <span class="nav-text">发布网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定域名"><span class="nav-number">1.1.6.</span> <span class="nav-text">绑定域名</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一个博客的完成，感觉自己成就感满满的，下一步就慢慢完善自己的博客啦"><span class="nav-number">1.2.</span> <span class="nav-text">第一个博客的完成，感觉自己成就感满满的，下一步就慢慢完善自己的博客啦</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -779,7 +812,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">2k</span>
+    <span title="站点总字数">3k</span>
   
 
   
