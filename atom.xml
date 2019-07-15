@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-07-15T02:54:56.371Z</updated>
+  <updated>2019-07-15T13:29:55.969Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yoursite.com/2019/07/15/Mrakdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
     <id>http://yoursite.com/2019/07/15/Mrakdown基本语法/</id>
     <published>2019-07-14T16:00:00.000Z</published>
-    <updated>2019-07-15T02:54:56.371Z</updated>
+    <updated>2019-07-15T13:29:55.969Z</updated>
     
     <summary type="html">
     
@@ -29,7 +29,8 @@
       
         
         
-          &lt;p&gt;今天我就来学习一下Mrakdown语法&lt;br&gt;Markdown语法可以通过简单的标记语法，使普通文本内容具有一定的格式，例如写博客就是&lt;br&gt;&lt;strong&gt;一.标题&lt;/strong&gt;&lt;br&gt;标题一般在&lt;strong&gt;#&lt;/strong&gt;后加个&lt;strong&gt;空格&lt;/str
+          &lt;p&gt;今天我就来学习一下Mrakdown语法&lt;br&gt;Markdown语法可以通过简单的标记语法，使普通文本内容具有一定的格式，例如写博客就是&lt;/p&gt;
+&lt;h2 id=&quot;一-标题&quot;&gt;&lt;a href=&quot;#一-标题&quot; class=&quot;headerlink&quot;
         
       
     
