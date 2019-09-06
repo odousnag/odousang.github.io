@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="今天继续学习爬虫  感觉还是不错的 基本库的使用1.urllib库官方文档：https://docs.python.org/3/library/urllib.html它是 Python 内置的HTTP请求库 不需要额外安装 1.发送请求使用urllib的request模块 我们可以实现请求的发送和得到回应带有 处理授权验证(authenticaton), 重定向(redirection), 游览器">
+<meta name="keywords" content="学习,分享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 爬虫学习(二)">
+<meta property="og:url" content="http://yoursite.com/2019/07/22/Python-爬虫学习-二/index.html">
+<meta property="og:site_name" content="Odousang&#39;s Blog">
+<meta property="og:description" content="今天继续学习爬虫  感觉还是不错的 基本库的使用1.urllib库官方文档：https://docs.python.org/3/library/urllib.html它是 Python 内置的HTTP请求库 不需要额外安装 1.发送请求使用urllib的request模块 我们可以实现请求的发送和得到回应带有 处理授权验证(authenticaton), 重定向(redirection), 游览器">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/image/21.png">
+<meta property="og:image" content="http://yoursite.com/image/22.png">
+<meta property="og:image" content="http://yoursite.com/image/23.png">
+<meta property="og:image" content="http://yoursite.com/image/24.png">
+<meta property="og:image" content="http://yoursite.com/image/25.png">
+<meta property="og:image" content="http://yoursite.com/image/26.png">
+<meta property="og:image" content="http://yoursite.com/image/27.png">
+<meta property="og:image" content="http://yoursite.com/image/28.png">
+<meta property="og:image" content="http://yoursite.com/image/29.png">
+<meta property="og:image" content="http://yoursite.com/image/30.png">
+<meta property="og:updated_time" content="2019-09-02T08:56:08.523Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 爬虫学习(二)">
+<meta name="twitter:description" content="今天继续学习爬虫  感觉还是不错的 基本库的使用1.urllib库官方文档：https://docs.python.org/3/library/urllib.html它是 Python 内置的HTTP请求库 不需要额外安装 1.发送请求使用urllib的request模块 我们可以实现请求的发送和得到回应带有 处理授权验证(authenticaton), 重定向(redirection), 游览器">
+<meta name="twitter:image" content="http://yoursite.com/image/21.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Odousang's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/07/22/Python-爬虫学习-二/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Python 爬虫学习(二) | Odousang's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Odousang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">愿我知足且上进，温柔而坚定</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/22/Python-爬虫学习-二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何文浩">
+      <meta itemprop="description" content="一个向往着生活的外星系程序员">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Odousang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python 爬虫学习(二)
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">9.1k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">8 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天继续学习爬虫  感觉还是不错的</p>
+<h2 id="基本库的使用"><a href="#基本库的使用" class="headerlink" title="基本库的使用"></a>基本库的使用</h2><h3 id="1-urllib库"><a href="#1-urllib库" class="headerlink" title="1.urllib库"></a>1.urllib库</h3><p>官方文档：<a href="https://docs.python.org/3/library/urllib.html" target="_blank" rel="noopener">https://docs.python.org/3/library/urllib.html</a><br>它是 Python 内置的HTTP请求库 不需要额外安装<br><img src="/image/21.png" alt="图片"></p>
+<h4 id="1-发送请求"><a href="#1-发送请求" class="headerlink" title="1.发送请求"></a>1.发送请求</h4><p>使用urllib的request模块 我们可以实现请求的发送和得到回应<br>带有 处理授权验证(authenticaton), 重定向(redirection), 游览器Cookies还有其他内容<br>1.urlopen()<br>写一个列子：  把python官网整个爬下来<br><img src="/image/22.png" alt="图片"></p>
+<p>我们调用read()方法可以得到返回的网页内容 调用status属性可以得到返回结果的状态码<br><img src="/image/23.png" alt="图片"><br>前两个输出分别输出了响应的状态码和响应的头信息，最后一个输出通过调用 getheader() 方法并传递一个参数 Server 获取了响应头中的 Server 值，结果是 nginx ，意思是服务器是用 Nginx 搭建的。</p>
+<h4 id="2-传递参数"><a href="#2-传递参数" class="headerlink" title="2.传递参数"></a>2.传递参数</h4><h5 id="1-data-参数"><a href="#1-data-参数" class="headerlink" title="1.data 参数"></a>1.data 参数</h5><p>如果是字节流编码格式的内容 则需要通过bytes()方法转化。请求方式为post方式<br><img src="/image/24.png" alt="图片"></p>
+<p> {word ： hello} 需要被转码成bytes类型 采用了bytes()方法<br>这里使用了urllib.parse 模块里面的unlencode()方法将字典转化为字符串 指定为utf-8<br>这里请求的站点可以提供HTTP请求测试</p>
+<h5 id="2-timeout-参数"><a href="#2-timeout-参数" class="headerlink" title="2.timeout 参数"></a>2.timeout 参数</h5><p>用于设置超时时间，如果请求超出了设置的时间，就会抛出异常，支持HTTP HTTPS FTP<br><img src="/image/25.png" alt="图片"><br>可以通过设置这个超时时间，来控制一个网页长时间未响应，就跳过抓取，使用try except语句实现<br><img src="/image/26.png" alt="图片"><br>这里我们请求了测试链接，设置超时时间是 Ol 秒，然后捕获了 URLError 异 常，接着判断异常是 socket.timeout 类型（意思就是超时异常，从而得出它确实是因为超时而报错， 打印输出了 TIME OUT。</p>
+<h4 id="3-Request"><a href="#3-Request" class="headerlink" title="3.Request"></a>3.Request</h4><p>class urllib. request. Request(ur1, data=None, headers={}, origin_req_host=None,<br>unverifiable=False, method=None)</p>
+<p>第一个 url用于请求URL 这是必传参数<br>第二个 data ，必须传 bytes （字节流）类型的。 如果它是字典，可以先用 urllib.parse 模块里的 urlencode（）编码。<br>第三个 headers 是请求头，在构造请求时通过 headers 参数直 接构造，也可以通过调用请求实例的 add_header（）方法添加。<br>最常用的用法就是通过修改 User-Agent 来伪装浏览器，默认的 User-Agent 是 一－ Python-urllib ，我们可以通过修改它来伪装浏览器。 比如要伪装火狐浏览器，你可以把它设置为 ：<br>Mozilla/5.o (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11<br>第四个 origin_req_host 是请求方的host名称或者IP地址<br>第五个 unverifiable 默认是false 意思是用户没有足够的去耐心啊来接收这个请求的结果<br>第六个 method 用来表示请求的方法 GET POST PUT<br><img src="/image/27.png" alt="图片"></p>
+<h4 id="4-高级用法"><a href="#4-高级用法" class="headerlink" title="4.高级用法"></a>4.高级用法</h4><p>先学习一下 urllib.request 模块里面的 BaseHandler 类<br>里面会有各种 Handler 子类继承<br><strong>HTTPDefaultErrorHandler</strong> ：用于处理http响应错误 抛出异常<br><strong>HTTPRedirectHandler</strong>：用于处理重定向<br><strong>HTTPCookieProcessor</strong>：用于处理Cookies<br><strong>ProxyHandler</strong>：用于设置代理，默认代理为空<br><strong>HTTPPasswordMgr</strong>：用于管理密码，维护用户名和密码的表<br><strong>HTTPBasicAuthHandler</strong>：用于管理认证，一个链接打开时需要认证，那么可以来解决认证问题</p>
+<p>另一个重要的类为 Opener 可以使用open()方法，返回类型和urlopen()如出一辙</p>
+<h6 id="1-验证"><a href="#1-验证" class="headerlink" title="1.验证"></a>1.验证</h6><p>有一些网站，当我们打开就会弹出提示框，要输入用户名和密码，验证成功后才能查看页面<br>我们遇到这个问题，借助 <strong>HTTPBasicAuthHandler</strong> 就可以完成<br><img src="/image/28.png" alt="图片"><br>这里首先实例化 HTTPBasicAuthHandler 对象，其参数是 HTTPPasswordMgrWithDefaultRealm 对象， 它利用 add_password（）添加进去用户名和密码，这样就建立了一个处理验证的 Handlero<br>接下来，利用这个 Handler 并使用 build_opener（）方法构建一个 Opener，这个 Opener 在发送请求 时就相当于已经验证成功了。<br>接下来，利用 Opener 的 open（）方法打开链接，就可以完成验证了。</p>
+<h6 id="2-代理"><a href="#2-代理" class="headerlink" title="2.代理"></a>2.代理</h6><p>当我们使用代理时<br><img src="/image/29.png" alt="图片"><br>在本地搭建了一个代理，在9743端口运行</p>
+<h3 id="2-处理异常"><a href="#2-处理异常" class="headerlink" title="2.处理异常"></a>2.处理异常</h3><h4 id="1-URLError"><a href="#1-URLError" class="headerlink" title="1.URLError"></a>1.URLError</h4><p>来自 urllib 库的error模块，由request模块产生的异常都可以通过这个类来处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from urllib inport request，error</span><br><span class="line">try：</span><br><span class="line">	response = request.urlopen(&apos;https://cuiqingcai.com/index.htm&apos;)</span><br><span class="line">except error.URLError as e:</span><br><span class="line">	print(e.reason)</span><br></pre></td></tr></table></figure>
+
+<p>这时候我们捕获了这个异常 运行结果就会出现 ：<strong>Not Found</strong></p>
+<h4 id="2-HTTPError"><a href="#2-HTTPError" class="headerlink" title="2.HTTPError"></a>2.HTTPError</h4><p>它是URLError 的子类，专门来处理HTTP请求错误。它有三个属性<br><strong>code</strong>：返回HTTP状态码  例如404表示网页不存在 500表示服务器内部错误<br><strong>reason</strong>：返回错误的原因<br><strong>headers</strong>：返回请求头</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from urllib import request, error </span><br><span class="line">try: </span><br><span class="line">	response = request.urlopen(’https://cuiqingcai.com/index.htm’) </span><br><span class="line">except error.HTTPError as e: </span><br><span class="line">	print(e.reason, e.code, e.headers, sep=’\n’) </span><br><span class="line">except error.URLError as e: </span><br><span class="line">	print(e.reason) </span><br><span class="line">else:</span><br><span class="line">	print(’ Request Successfully&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>这样做可以先捕获HTTPError异常，获取异常原因，错误状态码，headers信息<br>不是HTTPError异常，就会捕获URLError异常，输出错误原因<br>最后用else来处理正常逻辑</p>
+<h3 id="3-解释链接"><a href="#3-解释链接" class="headerlink" title="3.解释链接"></a>3.解释链接</h3><p>urllib库里面的parse模块，定义了处理URL的标准接口，例如URL各部分的抽取，合并以及链接转换</p>
+<h4 id="1-urlparse"><a href="#1-urlparse" class="headerlink" title="1.urlparse()"></a>1.urlparse()</h4><p>这个方法可以实现URL的识别和分段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import urlparse</span><br><span class="line"></span><br><span class="line">result = urlparse(&apos;http://www.baidu.com/index.html;user?id=5#comment&apos;)</span><br><span class="line">print(type(result),result)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;class &apos;urllib.parse.ParseResult&apos;&gt; </span><br><span class="line">ParseResult(scheme=&apos;http&apos;, netloc= &apos;www.baidu.com&apos;, path=&apos;/index. html ’, params=&apos;user&apos;, query=&apos;id=5&apos;, fragment=&apos;comment&apos;)</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，它包含 6个部分，分别是 scheme、 netloc、 path、 params 、 query 和 fragment。<br>：//前面的就是 scheme，代表协议<br>第一个／符号前面便是 netloc ，即域名<br>后面是 path，即访问路径；<br>分号；前面是 params ，代表参数；<br>问号？后面是查询条件 query， 一般用作 GET 类型的 URL;<br>井号＃后面是锚点，用于直接定位页面内部的下拉位置</p>
+<h4 id="2-urlunparse"><a href="#2-urlunparse" class="headerlink" title="2.urlunparse()"></a>2.urlunparse()</h4><p>相应地就有了它的对立方法 urlunparse()。 它接受的参数是一个可迭代对象，但是它的长度必须是 6， 否则会抛出参数数量不足或者过多的问题.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import urlunparse</span><br><span class="line"></span><br><span class="line">data = [&apos;http&apos;,&apos;www.baidu.com&apos;,&apos;index.html&apos;,&apos;user&apos;,&apos;a=6&apos;,&apos;comment&apos;]</span><br><span class="line">print(urlunparse(data))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.baidu.com/index.html;user?a=6#comment</span><br></pre></td></tr></table></figure>
+
+<p>成功实现了URL的构造</p>
+<h4 id="3-urlsplit"><a href="#3-urlsplit" class="headerlink" title="3.urlsplit()"></a>3.urlsplit()</h4><p>和 urlparse()方法非常相似，只不过它不再单独解析 params 这一部分，只运回 5 个结果。 上面例子中的 params 会合并到 path 中。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import urlsplit</span><br><span class="line"></span><br><span class="line">result = urlsplit(&apos;http://www.baidu.com/index.html;user?id=5#comment&apos;)</span><br><span class="line">	print(result)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SplitResult(scheme=&apos;http&apos;, netloc＝’www.baidu.com&apos;, path=&apos;/index.html;user&apos;, query&apos;id=S&apos;, fragment=&apos;comment&apos;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-urlunsplit"><a href="#4-urlunsplit" class="headerlink" title="4.urlunsplit()"></a>4.urlunsplit()</h4><p>它是将链接各个部分组合成完整链接的方法，传人的参数是一个可迭 代对象，例如列表、 元组等，唯一的区别是长度必须为5.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import urlunsplit</span><br><span class="line"></span><br><span class="line">data = [&apos;http&apos;,&apos;www.baidu.com&apos;,&apos;index.html&apos;,&apos;user&apos;,&apos;a=6&apos;,&apos;comment&apos;]</span><br><span class="line">print(urlunsplit(data))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.baidu.com/index.html;user?a=6#comment</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-urljoin"><a href="#5-urljoin" class="headerlink" title="5.urljoin()"></a>5.urljoin()</h4><p>生成链接还有另一个方法，那就是 urljoin（）方法。<br>我们可以提供一个 base_url(基础链接)作为第一个参数，将新的链接作为第二个参数，该方法会分析 base_url 的 scheme、 netloc 和 path 这 3 个内容并对新链接缺失的部分进行补充，最后返回结果。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import urljoin </span><br><span class="line"></span><br><span class="line">print(urljoin(&apos;http://www.baidu.com&apos;,&apos;FAQ. html&apos;)) </span><br><span class="line">print(urljoin(&apos;http://www.baidu.com&apos;,&apos;https://cuiqingcai.com/FAQ.html&apos;))</span><br><span class="line">print(urljoin(&apos;http://www.baidu.com/about.html&apos;,&apos;https://cuiqingcai.com/FAQ.html&apos;)) </span><br><span class="line">print(urljoin(&apos;http://baidu.com/about.html&apos;,&apos;https://cuiqingcai.comFAQ.html?question=2&apos;)) </span><br><span class="line">print(urljoin(&apos;http://www.baidu.com?wd=abc&apos;,&apos;https://cuiqingcai.com/index.php&apos;))</span><br><span class="line">print(urljoin(&apos;http://www.baidu.com&apos;,&apos;?category=2#comment&apos;))</span><br><span class="line">print(urljoin(&apos;www.baidu.com&apos;,&apos;?category=2#comment&apos;))</span><br><span class="line">print(urljoin(&apos;www.baidu.com#comment&apos;,&apos;？category=2&apos;))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">http://www.baidu.com/FAQ.html </span><br><span class="line">https://cuiqingcai.com/FAQ.html </span><br><span class="line">https://cuiqingcai.com/FAQ.html </span><br><span class="line">https://cuiqingcai.com/FAQ.html?question=2 </span><br><span class="line">https://cuiqingcai.com/index.php </span><br><span class="line">http://www.baidu.com?category=2#comment </span><br><span class="line">www.baidu.com?category=2#comment </span><br><span class="line">www.baidu.com?category=2</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-urlencode"><a href="#6-urlencode" class="headerlink" title="6.urlencode()"></a>6.urlencode()</h4><p>在构造 GET 请求参数时候非常有用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import urlencode</span><br><span class="line"></span><br><span class="line">params = &#123;</span><br><span class="line">	&apos;name&apos;:&apos;germey&apos;</span><br><span class="line">	&apos;age&apos;:22</span><br><span class="line">&#125;</span><br><span class="line">base_url = &apos;http://www.baidu.com&apos;</span><br><span class="line">url = base_url + urlencode(params)</span><br><span class="line">print(url)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.baidu.com?name=germey&amp;age=22</span><br></pre></td></tr></table></figure>
+
+<p>参数就成功地由字典类型转化为 GET请求参数了。</p>
+<h4 id="7-parse-qs"><a href="#7-parse-qs" class="headerlink" title="7.parse_qs()"></a>7.parse_qs()</h4><p>反序列化。如果我们有一串 GET 请求参数，利用parse_qs()方法，就可以将它转回字典</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import parse_qs</span><br><span class="line"></span><br><span class="line">query = &apos;name=germey&amp;age=22&apos;</span><br><span class="line">print(parse_qs(query))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;name&apos;:[&apos;germey&apos;],&apos;age&apos;:[&apos;22&apos;]&#125;</span><br></pre></td></tr></table></figure>
+
+<p>成功转回字典类型</p>
+<h4 id="8-parse-qsl"><a href="#8-parse-qsl" class="headerlink" title="8.parse_qsl()"></a>8.parse_qsl()</h4><p>用于将参数转化为元组组成的列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import parse_qsl</span><br><span class="line"></span><br><span class="line">query = &apos;name=germey$age=22&apos;</span><br><span class="line">print(parse_qsl(query))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：<br>[(‘name’,’germey’),(‘age’,’22’)]<br>运行结果是一个列表，列表中每一个元素都是一个元组，元组第一个内容是参数，第二个内容是参数值</p>
+<h4 id="9-quote"><a href="#9-quote" class="headerlink" title="9.quote()"></a>9.quote()</h4><p>可以将内容转化为URL编码的内容。当URL有中文时，可以会导致乱码，此时可以用这个方法将中文字符转化为URL编码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import quote</span><br><span class="line"></span><br><span class="line">keyword = &apos;壁纸&apos;</span><br><span class="line">url = &apos;https://www.baidu.com/s?wd=&apos; + quote(keywoed)</span><br><span class="line">print(url)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.baidu.com/s?wd＝%E5%A3%81%E7%BA%B8</span><br></pre></td></tr></table></figure>
+
+<h4 id="10-unquote"><a href="#10-unquote" class="headerlink" title="10.unquote()"></a>10.unquote()</h4><p>可以进行URL解码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from urllib.parse import unquote</span><br><span class="line"></span><br><span class="line">url = &apos;https://www.baidu.com/s?wd＝%E5%A3%81%E7%BA%B8&apos;</span><br><span class="line">print(unquote(url))</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.baidu.com/s?wd＝壁纸</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-分析-Robots-协议"><a href="#4-分析-Robots-协议" class="headerlink" title="4.分析 Robots 协议"></a>4.分析 Robots 协议</h3><p>利用 urllib 的 robotparser 模块，可以实现网站 Robots 协议的分析。</p>
+<h4 id="1-Robots-协议"><a href="#1-Robots-协议" class="headerlink" title="1.Robots 协议"></a>1.Robots 协议</h4><p>这些协议也称为爬虫协议，机器人协议。它通常是一个叫作 robot.txt 的文本文件，一般放在网站的根目录下。<br>当搜素爬虫访问一个站点时，它会检查这个站点根目录下是否存在 robot.txt 文件。<br>如果存在，爬虫就会根据其中定义的爬取范围来爬取，如果不存在，爬虫便会访问所有可直接访问的页面<br>robots.txt的样例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User-agent： *</span><br><span class="line">Disallow： /</span><br><span class="line">Allow: /public/</span><br></pre></td></tr></table></figure>
+
+<p>由 Allow 可以看出只允许爬取 public 目录的功能，将上面内容保存成 robots.txt 文件，放在网站的根目录下，<br>网站的入口文件（比如 index.php、 index.html 和 index.jsp 等）放在一起。<br>User-agent 描述了搜索爬虫的名称，这里将其设置为 <strong>＊</strong> 则代表该协议对任何爬取爬虫有效。<br>Disallow 指定了不允许抓取的目录，比如上例子中设置为 <strong>/</strong> 则代表不允许抓取所有页面。<br>Allow 一般和 Disallow 一起使用，一般不会单独使用，用来排除某些限制。<br>现在我们设置为 /public/，则表示所有页面不允许抓取，但可以抓取 public 目录。</p>
+<p>下面我们几个例子。<br>禁止所有爬虫访问任何目录的代码如下： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User-agent: * </span><br><span class="line">Disallow: /</span><br></pre></td></tr></table></figure>
+
+<p>允许所有爬虫访问任何目录的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User-agent: *</span><br><span class="line">Disallow:</span><br></pre></td></tr></table></figure>
+
+<p>直接把 robots.txt 文件留空也是可以的。</p>
+<p>禁止所有爬虫访问网站某些目录的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User-agent： *</span><br><span class="line">Disallow： /private/</span><br><span class="line">Disallow: /tmp/</span><br></pre></td></tr></table></figure>
+
+<p>只允许某一个爬虫访问的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">User-agent： WebCrawler</span><br><span class="line">Disallow：</span><br><span class="line">User-agent： *</span><br><span class="line">Disallow: /</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-爬虫名称"><a href="#2-爬虫名称" class="headerlink" title="2.爬虫名称"></a>2.爬虫名称</h4><p>常见的爬虫名称<br><img src="/image/30.png" alt="图片"> </p>
+<h4 id="3-robotparser"><a href="#3-robotparser" class="headerlink" title="3.robotparser"></a>3.robotparser</h4><p>我们就可以用 <strong>robotparser</strong> 模块来解析 robots.txt 。<br>该模块提供了一个 类 RobotFileParser，它可以根据某网站的 robots.txt 文件来判断一个爬取爬虫是否有权限来爬取这个网页。 </p>
+<p>这个类常用的几个方法。<br><strong>set_url()</strong>：用来设置 robots.txt 文件的链接。<br><strong>read()</strong>：读取 robots.txt 文件并进行分析。 注意，这个方法执行一个读取和分析操作，如果不调用这个方法， 接下来的判断都会为 False，所以一定记得调用这个方法。 这个方法不会返回任何内容，但是执行了读取操作。<br><strong>parse()</strong>：用来解析robots.txt文件，传人的参数是 robots.txt某些行的内容，它会按照 robots.txt 的语法规则来分析这些内容。<br><strong>can_fetch()</strong>：该方法传人两个参数， 第一个是 User-agent，第二个是要抓取的 URL。 返回的 内容是该搜索引擎是否可以抓取这个 URL，返回结果是 True 或 Falsea<br><strong>mtime()</strong>：返回的是上次抓取和分析 robots.txt 的时间，这对于长时间分析和抓取的搜索爬虫是 很有必要的，你可能需要定期检查来抓取最新的 robots.txt。<br><strong>modified()</strong>：它同样对长时间分析和抓取的搜索爬虫很有帮助，将当前时间设置为上次抓取和分析 robot.txt的时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from urllib.robotparser import RobotFileParser </span><br><span class="line"></span><br><span class="line">rp = RobotFileParser() </span><br><span class="line">rp.set_url(&apos;http://www.jianshu.com/robots.txt&apos;) </span><br><span class="line">rp.read() </span><br><span class="line">print(rp.can_fetch(&apos;*&apos;,&apos;http://www.jianshu.com/p/b67554025d7d&apos;)) </span><br><span class="line">print(rp.can_fetch(&apos;*&apos;,&quot;http://www.jianshu.com/search?q=python&amp;page=l&amp;type=collections&quot;))</span><br></pre></td></tr></table></figure>
+
+<p>首先创建 RobotFileParser 对象， 然后通过set_url()方法设置了 robots.txt 的链接<br>同样可以使用parse()方法执行读取和分析</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from urllib.robotparser import RobotFileParser </span><br><span class="line">from urllib.request import urlopen</span><br><span class="line"></span><br><span class="line">rp = RobotFileParser() </span><br><span class="line">rp.parse(urlopen(&apos;http://www.jianshu.com/robots.txt&apos;))</span><br><span class="line"></span><br><span class="line">print(rp.can_fetch(&apos;*&apos;,&apos;http://www.jianshu.com/p/b67554025d7d&apos;)) </span><br><span class="line">print(rp.can_fetch(&apos;*&apos;,&quot;http://www.jianshu.com/search?q=python&amp;page=l&amp;type=collections&quot;))</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+            <a href="/tags/分享/" rel="tag"># 分享</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/20/Python-爬虫学习-一/" rel="next" title="Python 爬虫学习(一)">
+                <i class="fa fa-chevron-left"></i> Python 爬虫学习(一)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="何文浩">
+            
+              <p class="site-author-name" itemprop="name">何文浩</p>
+              <div class="site-description motion-element" itemprop="description">一个向往着生活的外星系程序员</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/odousnag" title="GitHub &rarr; https://github.com/odousnag" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/169530260@qq.com" title="E-Mail &rarr; 169530260@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/hwh15915042241" title="Wechat &rarr; hwh15915042241"><i class="fa fa-fw fa-wechat"></i>Wechat</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/1695303260" title="qq &rarr; 1695303260"><i class="fa fa-fw fa-qq"></i>qq</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.zhihu.com/people/xiang-xin-wo-men-14/activities" title="zhihu &rarr; https://www.zhihu.com/people/xiang-xin-wo-men-14/activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-zhihu"></i>zhihu</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本库的使用"><span class="nav-number">1.</span> <span class="nav-text">基本库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-urllib库"><span class="nav-number">1.1.</span> <span class="nav-text">1.urllib库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-发送请求"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.发送请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-传递参数"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.传递参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-data-参数"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.data 参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-timeout-参数"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2.timeout 参数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Request"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.Request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-高级用法"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.高级用法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-验证"><span class="nav-number">1.1.4.0.1.</span> <span class="nav-text">1.验证</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-代理"><span class="nav-number">1.1.4.0.2.</span> <span class="nav-text">2.代理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-处理异常"><span class="nav-number">1.2.</span> <span class="nav-text">2.处理异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-URLError"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.URLError</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTPError"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.HTTPError</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-解释链接"><span class="nav-number">1.3.</span> <span class="nav-text">3.解释链接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-urlparse"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.urlparse()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-urlunparse"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.urlunparse()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-urlsplit"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.urlsplit()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-urlunsplit"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.urlunsplit()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-urljoin"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.urljoin()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-urlencode"><span class="nav-number">1.3.6.</span> <span class="nav-text">6.urlencode()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-parse-qs"><span class="nav-number">1.3.7.</span> <span class="nav-text">7.parse_qs()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-parse-qsl"><span class="nav-number">1.3.8.</span> <span class="nav-text">8.parse_qsl()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-quote"><span class="nav-number">1.3.9.</span> <span class="nav-text">9.quote()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-unquote"><span class="nav-number">1.3.10.</span> <span class="nav-text">10.unquote()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-分析-Robots-协议"><span class="nav-number">1.4.</span> <span class="nav-text">4.分析 Robots 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Robots-协议"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.Robots 协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-爬虫名称"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.爬虫名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-robotparser"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.robotparser</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何文浩</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">14k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">13 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"node_modules/live2d-widget-models-master/packages","model":{"jsonPath":"live2d-widget-model-tororo"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
