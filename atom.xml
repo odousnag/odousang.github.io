@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-09-11T10:23:13.462Z</updated>
+  <updated>2019-10-13T08:49:00.380Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,42 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java Web学习(6) Servlet </title>
+    <link href="http://yoursite.com/2019/10/13/Java-Web%E5%AD%A6%E4%B9%A0-6-Servlet/"/>
+    <id>http://yoursite.com/2019/10/13/Java-Web学习-6-Servlet/</id>
+    <published>2019-10-12T16:00:00.000Z</published>
+    <updated>2019-10-13T08:49:00.380Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;今天刚刚学习到的新知识&lt;/p&gt;
+&lt;h2 id=&quot;1-认识Servlet&quot;&gt;&lt;a href=&quot;#1-认识Servlet&quot; class=&quot;headerlink&quot; title=&quot;1.认识Servlet&quot;&gt;&lt;/a&gt;1.认识Servlet&lt;/h2&gt;&lt;p&gt;Servlet 是运行在
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+      <category term="Servlet" scheme="http://yoursite.com/categories/Java/Servlet/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Python 爬虫学习(二)</title>
     <link href="http://yoursite.com/2019/07/22/Python-%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0-%E4%BA%8C/"/>
     <id>http://yoursite.com/2019/07/22/Python-爬虫学习-二/</id>
     <published>2019-07-21T16:00:00.000Z</published>
-    <updated>2019-09-11T10:23:13.462Z</updated>
+    <updated>2019-10-13T08:49:01.883Z</updated>
     
     <summary type="html">
     
@@ -50,7 +81,7 @@
     <link href="http://yoursite.com/2019/07/20/Python-%E7%88%AC%E8%99%AB%E5%AD%A6%E4%B9%A0-%E4%B8%80/"/>
     <id>http://yoursite.com/2019/07/20/Python-爬虫学习-一/</id>
     <published>2019-07-19T16:00:00.000Z</published>
-    <updated>2019-08-31T14:48:19.033Z</updated>
+    <updated>2019-10-13T08:48:55.644Z</updated>
     
     <summary type="html">
     
@@ -79,7 +110,7 @@
     <link href="http://yoursite.com/2019/07/15/Mrakdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"/>
     <id>http://yoursite.com/2019/07/15/Mrakdown基本语法/</id>
     <published>2019-07-14T16:00:00.000Z</published>
-    <updated>2019-07-15T13:29:55.969Z</updated>
+    <updated>2019-10-13T08:48:58.916Z</updated>
     
     <summary type="html">
     
@@ -139,7 +170,7 @@
     <link href="http://yoursite.com/2019/03/14/%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2019/03/14/建立自己的个人博客/</id>
     <published>2019-03-14T09:56:31.000Z</published>
-    <updated>2019-07-15T02:14:56.232Z</updated>
+    <updated>2019-10-13T08:48:53.875Z</updated>
     
     <summary type="html">
     

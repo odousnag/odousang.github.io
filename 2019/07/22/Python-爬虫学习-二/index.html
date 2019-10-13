@@ -103,24 +103,30 @@
 <meta property="og:site_name" content="Odousang&#39;s Blog">
 <meta property="og:description" content="今天继续学习爬虫  感觉还是不错的 基本库的使用1.urllib库官方文档：https://docs.python.org/3/library/urllib.html它是 Python 内置的HTTP请求库 不需要额外安装 1.发送请求使用urllib的request模块 我们可以实现请求的发送和得到回应带有 处理授权验证(authenticaton), 重定向(redirection), 游览器">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/image/21.png">
-<meta property="og:image" content="http://yoursite.com/image/22.png">
-<meta property="og:image" content="http://yoursite.com/image/23.png">
-<meta property="og:image" content="http://yoursite.com/image/24.png">
-<meta property="og:image" content="http://yoursite.com/image/25.png">
-<meta property="og:image" content="http://yoursite.com/image/26.png">
-<meta property="og:image" content="http://yoursite.com/image/27.png">
-<meta property="og:image" content="http://yoursite.com/image/28.png">
-<meta property="og:image" content="http://yoursite.com/image/29.png">
-<meta property="og:image" content="http://yoursite.com/image/30.png">
-<meta property="og:image" content="http://yoursite.com/image/31.png">
-<meta property="og:image" content="http://yoursite.com/image/32.png">
-<meta property="og:image" content="http://yoursite.com/image/33.png">
-<meta property="og:updated_time" content="2019-09-11T10:23:13.462Z">
+<meta property="og:image" content="http://yoursite.com/image/python/21.png">
+<meta property="og:image" content="http://yoursite.com/image/python/22.png">
+<meta property="og:image" content="http://yoursite.com/image/python/23.png">
+<meta property="og:image" content="http://yoursite.com/image/python/24.png">
+<meta property="og:image" content="http://yoursite.com/image/python/25.png">
+<meta property="og:image" content="http://yoursite.com/image/python/26.png">
+<meta property="og:image" content="http://yoursite.com/image/python/27.png">
+<meta property="og:image" content="http://yoursite.com/image/python/28.png">
+<meta property="og:image" content="http://yoursite.com/image/python/29.png">
+<meta property="og:image" content="http://yoursite.com/image/python/30.png">
+<meta property="og:image" content="http://yoursite.com/image/python/31.png">
+<meta property="og:image" content="http://yoursite.com/image/python/32.png">
+<meta property="og:image" content="http://yoursite.com/image/python/33.png">
+<meta property="og:image" content="http://yoursite.com/image/python/34.png">
+<meta property="og:image" content="http://yoursite.com/image/python/35.png">
+<meta property="og:image" content="http://yoursite.com/image/python/36.png">
+<meta property="og:image" content="http://yoursite.com/image/python/37.png">
+<meta property="og:image" content="http://yoursite.com/image/python/38.png">
+<meta property="og:image" content="http://yoursite.com/image/python/39.png">
+<meta property="og:updated_time" content="2019-10-13T08:49:01.883Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python 爬虫学习(二)">
 <meta name="twitter:description" content="今天继续学习爬虫  感觉还是不错的 基本库的使用1.urllib库官方文档：https://docs.python.org/3/library/urllib.html它是 Python 内置的HTTP请求库 不需要额外安装 1.发送请求使用urllib的request模块 我们可以实现请求的发送和得到回应带有 处理授权验证(authenticaton), 重定向(redirection), 游览器">
-<meta name="twitter:image" content="http://yoursite.com/image/21.png">
+<meta name="twitter:image" content="http://yoursite.com/image/python/21.png">
 
 
 
@@ -408,7 +414,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">11k</span>
+              <span title="本文字数">15k</span>
             </span>
           
 
@@ -420,7 +426,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">10 分钟</span>
+              <span title="阅读时长">13 分钟</span>
             </span>
           
 
@@ -440,18 +446,18 @@
 
       
         <p>今天继续学习爬虫  感觉还是不错的</p>
-<h2 id="基本库的使用"><a href="#基本库的使用" class="headerlink" title="基本库的使用"></a>基本库的使用</h2><h3 id="1-urllib库"><a href="#1-urllib库" class="headerlink" title="1.urllib库"></a>1.urllib库</h3><p>官方文档：<a href="https://docs.python.org/3/library/urllib.html" target="_blank" rel="noopener">https://docs.python.org/3/library/urllib.html</a><br>它是 Python 内置的HTTP请求库 不需要额外安装<br><img src="/image/21.png" alt="图片"></p>
-<h4 id="1-发送请求"><a href="#1-发送请求" class="headerlink" title="1.发送请求"></a>1.发送请求</h4><p>使用urllib的request模块 我们可以实现请求的发送和得到回应<br>带有 处理授权验证(authenticaton), 重定向(redirection), 游览器Cookies还有其他内容<br>1.urlopen()<br>写一个列子：  把python官网整个爬下来<br><img src="/image/22.png" alt="图片"></p>
-<p>我们调用read()方法可以得到返回的网页内容 调用status属性可以得到返回结果的状态码<br><img src="/image/23.png" alt="图片"><br>前两个输出分别输出了响应的状态码和响应的头信息，最后一个输出通过调用 getheader() 方法并传递一个参数 Server 获取了响应头中的 Server 值，结果是 nginx ，意思是服务器是用 Nginx 搭建的。</p>
-<h4 id="2-传递参数"><a href="#2-传递参数" class="headerlink" title="2.传递参数"></a>2.传递参数</h4><h5 id="1-data-参数"><a href="#1-data-参数" class="headerlink" title="1.data 参数"></a>1.data 参数</h5><p>如果是字节流编码格式的内容 则需要通过bytes()方法转化。请求方式为post方式<br><img src="/image/24.png" alt="图片"></p>
+<h2 id="基本库的使用"><a href="#基本库的使用" class="headerlink" title="基本库的使用"></a>基本库的使用</h2><h3 id="1-urllib库"><a href="#1-urllib库" class="headerlink" title="1.urllib库"></a>1.urllib库</h3><p>官方文档：<a href="https://docs.python.org/3/library/urllib.html" target="_blank" rel="noopener">https://docs.python.org/3/library/urllib.html</a><br>它是 Python 内置的HTTP请求库 不需要额外安装<br><img src="/image/python/21.png" alt="图片"></p>
+<h4 id="1-发送请求"><a href="#1-发送请求" class="headerlink" title="1.发送请求"></a>1.发送请求</h4><p>使用urllib的request模块 我们可以实现请求的发送和得到回应<br>带有 处理授权验证(authenticaton), 重定向(redirection), 游览器Cookies还有其他内容<br>1.urlopen()<br>写一个列子：  把python官网整个爬下来<br><img src="/image/python/22.png" alt="图片"></p>
+<p>我们调用read()方法可以得到返回的网页内容 调用status属性可以得到返回结果的状态码<br><img src="/image/python/23.png" alt="图片"><br>前两个输出分别输出了响应的状态码和响应的头信息，最后一个输出通过调用 getheader() 方法并传递一个参数 Server 获取了响应头中的 Server 值，结果是 nginx ，意思是服务器是用 Nginx 搭建的。</p>
+<h4 id="2-传递参数"><a href="#2-传递参数" class="headerlink" title="2.传递参数"></a>2.传递参数</h4><h5 id="1-data-参数"><a href="#1-data-参数" class="headerlink" title="1.data 参数"></a>1.data 参数</h5><p>如果是字节流编码格式的内容 则需要通过bytes()方法转化。请求方式为post方式<br><img src="/image/python/24.png" alt="图片"></p>
 <p> {word ： hello} 需要被转码成bytes类型 采用了bytes()方法<br>这里使用了urllib.parse 模块里面的unlencode()方法将字典转化为字符串 指定为utf-8<br>这里请求的站点可以提供HTTP请求测试</p>
-<h5 id="2-timeout-参数"><a href="#2-timeout-参数" class="headerlink" title="2.timeout 参数"></a>2.timeout 参数</h5><p>用于设置超时时间，如果请求超出了设置的时间，就会抛出异常，支持HTTP HTTPS FTP<br><img src="/image/25.png" alt="图片"><br>可以通过设置这个超时时间，来控制一个网页长时间未响应，就跳过抓取，使用try except语句实现<br><img src="/image/26.png" alt="图片"><br>这里我们请求了测试链接，设置超时时间是 Ol 秒，然后捕获了 URLError 异 常，接着判断异常是 socket.timeout 类型（意思就是超时异常，从而得出它确实是因为超时而报错， 打印输出了 TIME OUT。</p>
+<h5 id="2-timeout-参数"><a href="#2-timeout-参数" class="headerlink" title="2.timeout 参数"></a>2.timeout 参数</h5><p>用于设置超时时间，如果请求超出了设置的时间，就会抛出异常，支持HTTP HTTPS FTP<br><img src="/image/python/25.png" alt="图片"><br>可以通过设置这个超时时间，来控制一个网页长时间未响应，就跳过抓取，使用try except语句实现<br><img src="/image/python/26.png" alt="图片"><br>这里我们请求了测试链接，设置超时时间是 Ol 秒，然后捕获了 URLError 异 常，接着判断异常是 socket.timeout 类型（意思就是超时异常，从而得出它确实是因为超时而报错， 打印输出了 TIME OUT。</p>
 <h4 id="3-Request"><a href="#3-Request" class="headerlink" title="3.Request"></a>3.Request</h4><p>class urllib. request. Request(ur1, data=None, headers={}, origin_req_host=None,<br>unverifiable=False, method=None)</p>
-<p>第一个 url用于请求URL 这是必传参数<br>第二个 data ，必须传 bytes （字节流）类型的。 如果它是字典，可以先用 urllib.parse 模块里的 urlencode（）编码。<br>第三个 headers 是请求头，在构造请求时通过 headers 参数直 接构造，也可以通过调用请求实例的 add_header（）方法添加。<br>最常用的用法就是通过修改 User-Agent 来伪装浏览器，默认的 User-Agent 是 一－ Python-urllib ，我们可以通过修改它来伪装浏览器。 比如要伪装火狐浏览器，你可以把它设置为 ：<br>Mozilla/5.o (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11<br>第四个 origin_req_host 是请求方的host名称或者IP地址<br>第五个 unverifiable 默认是false 意思是用户没有足够的去耐心啊来接收这个请求的结果<br>第六个 method 用来表示请求的方法 GET POST PUT<br><img src="/image/27.png" alt="图片"></p>
+<p>第一个 url用于请求URL 这是必传参数<br>第二个 data ，必须传 bytes （字节流）类型的。 如果它是字典，可以先用 urllib.parse 模块里的 urlencode（）编码。<br>第三个 headers 是请求头，在构造请求时通过 headers 参数直 接构造，也可以通过调用请求实例的 add_header（）方法添加。<br>最常用的用法就是通过修改 User-Agent 来伪装浏览器，默认的 User-Agent 是 一－ Python-urllib ，我们可以通过修改它来伪装浏览器。 比如要伪装火狐浏览器，你可以把它设置为 ：<br>Mozilla/5.o (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11<br>第四个 origin_req_host 是请求方的host名称或者IP地址<br>第五个 unverifiable 默认是false 意思是用户没有足够的去耐心啊来接收这个请求的结果<br>第六个 method 用来表示请求的方法 GET POST PUT<br><img src="/image/python/27.png" alt="图片"></p>
 <h4 id="4-高级用法"><a href="#4-高级用法" class="headerlink" title="4.高级用法"></a>4.高级用法</h4><p>先学习一下 urllib.request 模块里面的 BaseHandler 类<br>里面会有各种 Handler 子类继承<br><strong>HTTPDefaultErrorHandler</strong> ：用于处理http响应错误 抛出异常<br><strong>HTTPRedirectHandler</strong>：用于处理重定向<br><strong>HTTPCookieProcessor</strong>：用于处理Cookies<br><strong>ProxyHandler</strong>：用于设置代理，默认代理为空<br><strong>HTTPPasswordMgr</strong>：用于管理密码，维护用户名和密码的表<br><strong>HTTPBasicAuthHandler</strong>：用于管理认证，一个链接打开时需要认证，那么可以来解决认证问题</p>
 <p>另一个重要的类为 Opener 可以使用open()方法，返回类型和urlopen()如出一辙</p>
-<h6 id="1-验证"><a href="#1-验证" class="headerlink" title="1.验证"></a>1.验证</h6><p>有一些网站，当我们打开就会弹出提示框，要输入用户名和密码，验证成功后才能查看页面<br>我们遇到这个问题，借助 <strong>HTTPBasicAuthHandler</strong> 就可以完成<br><img src="/image/28.png" alt="图片"><br>这里首先实例化 HTTPBasicAuthHandler 对象，其参数是 HTTPPasswordMgrWithDefaultRealm 对象， 它利用 add_password（）添加进去用户名和密码，这样就建立了一个处理验证的 Handlero<br>接下来，利用这个 Handler 并使用 build_opener（）方法构建一个 Opener，这个 Opener 在发送请求 时就相当于已经验证成功了。<br>接下来，利用 Opener 的 open（）方法打开链接，就可以完成验证了。</p>
-<h6 id="2-代理"><a href="#2-代理" class="headerlink" title="2.代理"></a>2.代理</h6><p>当我们使用代理时<br><img src="/image/29.png" alt="图片"><br>在本地搭建了一个代理，在9743端口运行</p>
+<h6 id="1-验证"><a href="#1-验证" class="headerlink" title="1.验证"></a>1.验证</h6><p>有一些网站，当我们打开就会弹出提示框，要输入用户名和密码，验证成功后才能查看页面<br>我们遇到这个问题，借助 <strong>HTTPBasicAuthHandler</strong> 就可以完成<br><img src="/image/python/28.png" alt="图片"><br>这里首先实例化 HTTPBasicAuthHandler 对象，其参数是 HTTPPasswordMgrWithDefaultRealm 对象， 它利用 add_password（）添加进去用户名和密码，这样就建立了一个处理验证的 Handlero<br>接下来，利用这个 Handler 并使用 build_opener（）方法构建一个 Opener，这个 Opener 在发送请求 时就相当于已经验证成功了。<br>接下来，利用 Opener 的 open（）方法打开链接，就可以完成验证了。</p>
+<h6 id="2-代理"><a href="#2-代理" class="headerlink" title="2.代理"></a>2.代理</h6><p>当我们使用代理时<br><img src="/image/python/29.png" alt="图片"><br>在本地搭建了一个代理，在9743端口运行</p>
 <h3 id="2-处理异常"><a href="#2-处理异常" class="headerlink" title="2.处理异常"></a>2.处理异常</h3><h4 id="1-URLError"><a href="#1-URLError" class="headerlink" title="1.URLError"></a>1.URLError</h4><p>来自 urllib 库的error模块，由request模块产生的异常都可以通过这个类来处理</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from urllib inport request，error</span><br><span class="line">try：</span><br><span class="line">	response = request.urlopen(&apos;https://cuiqingcai.com/index.htm&apos;)</span><br><span class="line">except error.URLError as e:</span><br><span class="line">	print(e.reason)</span><br></pre></td></tr></table></figure>
 
@@ -541,7 +547,7 @@
 <p>只允许某一个爬虫访问的代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">User-agent： WebCrawler</span><br><span class="line">Disallow：</span><br><span class="line">User-agent： *</span><br><span class="line">Disallow: /</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-爬虫名称"><a href="#2-爬虫名称" class="headerlink" title="2.爬虫名称"></a>2.爬虫名称</h4><p>常见的爬虫名称<br><img src="/image/30.png" alt="图片"> </p>
+<h4 id="2-爬虫名称"><a href="#2-爬虫名称" class="headerlink" title="2.爬虫名称"></a>2.爬虫名称</h4><p>常见的爬虫名称<br><img src="/image/python/30.png" alt="图片"> </p>
 <h4 id="3-robotparser"><a href="#3-robotparser" class="headerlink" title="3.robotparser"></a>3.robotparser</h4><p>我们就可以用 <strong>robotparser</strong> 模块来解析 robots.txt 。<br>该模块提供了一个 类 RobotFileParser，它可以根据某网站的 robots.txt 文件来判断一个爬取爬虫是否有权限来爬取这个网页。 </p>
 <p>这个类常用的几个方法。<br><strong>set_url()</strong>：用来设置 robots.txt 文件的链接。<br><strong>read()</strong>：读取 robots.txt 文件并进行分析。 注意，这个方法执行一个读取和分析操作，如果不调用这个方法， 接下来的判断都会为 False，所以一定记得调用这个方法。 这个方法不会返回任何内容，但是执行了读取操作。<br><strong>parse()</strong>：用来解析robots.txt文件，传人的参数是 robots.txt某些行的内容，它会按照 robots.txt 的语法规则来分析这些内容。<br><strong>can_fetch()</strong>：该方法传人两个参数， 第一个是 User-agent，第二个是要抓取的 URL。 返回的 内容是该搜索引擎是否可以抓取这个 URL，返回结果是 True 或 Falsea<br><strong>mtime()</strong>：返回的是上次抓取和分析 robots.txt 的时间，这对于长时间分析和抓取的搜索爬虫是 很有必要的，你可能需要定期检查来抓取最新的 robots.txt。<br><strong>modified()</strong>：它同样对长时间分析和抓取的搜索爬虫很有帮助，将当前时间设置为上次抓取和分析 robot.txt的时间</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from urllib.robotparser import RobotFileParser </span><br><span class="line"></span><br><span class="line">rp = RobotFileParser() </span><br><span class="line">rp.set_url(&apos;http://www.jianshu.com/robots.txt&apos;) </span><br><span class="line">rp.read() </span><br><span class="line">print(rp.can_fetch(&apos;*&apos;,&apos;http://www.jianshu.com/p/b67554025d7d&apos;)) </span><br><span class="line">print(rp.can_fetch(&apos;*&apos;,&quot;http://www.jianshu.com/search?q=python&amp;page=l&amp;type=collections&quot;))</span><br></pre></td></tr></table></figure>
@@ -549,18 +555,18 @@
 <p>首先创建 RobotFileParser 对象， 然后通过set_url()方法设置了 robots.txt 的链接<br>同样可以使用parse()方法执行读取和分析</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from urllib.robotparser import RobotFileParser </span><br><span class="line">from urllib.request import urlopen</span><br><span class="line"></span><br><span class="line">rp = RobotFileParser() </span><br><span class="line">rp.parse(urlopen(&apos;http://www.jianshu.com/robots.txt&apos;))</span><br><span class="line"></span><br><span class="line">print(rp.can_fetch(&apos;*&apos;,&apos;http://www.jianshu.com/p/b67554025d7d&apos;)) </span><br><span class="line">print(rp.can_fetch(&apos;*&apos;,&quot;http://www.jianshu.com/search?q=python&amp;page=l&amp;type=collections&quot;))</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-使用-requests"><a href="#2-使用-requests" class="headerlink" title="2.使用 requests"></a>2.使用 requests</h2><p>###1.基本用法<br>首先我们要安装好requests库  这里自行安装</p>
+<h2 id="2-使用-requests"><a href="#2-使用-requests" class="headerlink" title="2.使用 requests"></a>2.使用 requests</h2><h3 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1.基本用法"></a>1.基本用法</h3><p>首先我们要安装好requests库  这里自行安装</p>
 <h4 id="1-实例"><a href="#1-实例" class="headerlink" title="1.实例"></a>1.实例</h4><p>requests 中相应以 GET 方式请求网页，就是 get() 方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">r = requests.get(&apos;https://www.baidu.com/&apos;)</span><br><span class="line">print(type(r))</span><br><span class="line">print(r.status_code)</span><br><span class="line">print(type(r.text))</span><br><span class="line">print(r.text)</span><br><span class="line">print(r.cookies)</span><br></pre></td></tr></table></figure>
 
-<p><img src="/image/31.png" alt="图片"><br>可以看到输出了Response的类型，状态码，响应体的类型，内容以及Cookies</p>
+<p><img src="/image/python/31.png" alt="图片"><br>可以看到输出了Response的类型，状态码，响应体的类型，内容以及Cookies</p>
 <h4 id="2-GET请求"><a href="#2-GET请求" class="headerlink" title="2.GET请求"></a>2.GET请求</h4><p>先构建一个最简单的GET请求，请求的链接为 <a href="http://httpbin.org/get" target="_blank" rel="noopener">http://httpbin.org/get</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">r = requests.get(&apos;http://httpbin.org/get&apos;)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：<br><img src="/image/32.png" alt="图片"><br>如果我们要添加额外的信息，例如 name 是 germey，age 是 22<br>在这里，我们直接利用 params 这个参数就好了</p>
+<p>运行结果：<br><img src="/image/python/32.png" alt="图片"><br>如果我们要添加额外的信息，例如 name 是 germey，age 是 22<br>在这里，我们直接利用 params 这个参数就好了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">data = &#123;</span><br><span class="line">	&apos;name&apos;:&apos;germey&apos;</span><br><span class="line">	&apos;aeg&apos;:22</span><br><span class="line">&#125;</span><br><span class="line">r = requests.get(&quot;http://httpbin.org/get&quot;,params=data)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：<br><img src="/image/33.png" alt="图片"><br>通过运行结果可以判断，请求的链接被构造成：<strong><a href="http://httpbin.org/get?age=22&amp;name=germey" target="_blank" rel="noopener">http://httpbin.org/get?age=22&amp;name=germey</a></strong><br>网页的返回类型实际上是str类型，但是它是JSON格式。所以想直接解析返回结果，得到字典格式的话，<br>可以直接调用json()方法。</p>
+<p>运行结果：<br><img src="/image/python/33.png" alt="图片"><br>通过运行结果可以判断，请求的链接被构造成：<strong><a href="http://httpbin.org/get?age=22&amp;name=germey" target="_blank" rel="noopener">http://httpbin.org/get?age=22&amp;name=germey</a></strong><br>网页的返回类型实际上是str类型，但是它是JSON格式。所以想直接解析返回结果，得到字典格式的话，<br>可以直接调用json()方法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import requests </span><br><span class="line"></span><br><span class="line">r = requests.get(&quot;http://httpbin.org/get&quot;) </span><br><span class="line">print(type(r.text))</span><br><span class="line">print(r.json()) </span><br><span class="line">print(type(r.json()))</span><br></pre></td></tr></table></figure>
 
 <p>运行结果：</p>
@@ -568,7 +574,48 @@
 
 <p>但是要注意的是，如果返回结果不是JSON格式，会出现解析错误</p>
 <h5 id="1-抓取网页"><a href="#1-抓取网页" class="headerlink" title="1.抓取网页"></a>1.抓取网页</h5><p>如果请求的是普通的网页，则可以获得相应的内容。<br>我们来爬取一下知乎的问题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    &apos;User-Agent&apos;: &apos;Mozilla/5.0(Macintosh; Intel Mac OS X 10_11_4) &apos;</span><br><span class="line">                 &apos;AppleWebKit/537.36(KHTML,like Gecko)&apos;</span><br><span class="line">                 &apos;Chrome/52.0.2743.116 Safari/537.36&apos;</span><br><span class="line">&#125;</span><br><span class="line">r = requests.get(&quot;https://www.zhihu.com/explore&quot;, headers=headers)</span><br><span class="line">pattern = re.compile(&apos;explore-feed.*?question_link.*?&gt;(.*?)&lt;/a&gt;&apos;,re.S)</span><br><span class="line">titles = re.findall(pattern, r.text)</span><br><span class="line">print(titles)</span><br></pre></td></tr></table></figure>
+
+<p>在这里我们加入了headers信息，其中包含 User-Agent 字段信息，如果不加这个，知乎会禁止抓取。</p>
+<h4 id="3-POST-请求"><a href="#3-POST-请求" class="headerlink" title="3.POST 请求"></a>3.POST 请求</h4><p>除了GET请求，另一种常见的请求方法是POST</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import requests </span><br><span class="line">data =&#123;&apos;name &apos;:&apos;germey&apos;,&apos;age&apos;:&apos;22&apos;&#125;</span><br><span class="line">r = requests.post(&quot;http://httpbin.org/post&quot;, data=data)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+
+<p>如果网页判断是POST方式，就把相关请求信息返回</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;args&quot;: &#123;&#125;, </span><br><span class="line">  &quot;data&quot;: &quot;&quot;, </span><br><span class="line">  &quot;files&quot;: &#123;&#125;, </span><br><span class="line">  &quot;form&quot;: &#123;</span><br><span class="line">    &quot;age&quot;: &quot;22&quot;, </span><br><span class="line">    &quot;name &quot;: &quot;germey&quot;</span><br><span class="line">  &#125;, </span><br><span class="line">  &quot;headers&quot;: &#123;</span><br><span class="line">    &quot;Accept&quot;: &quot;*/*&quot;, </span><br><span class="line">    &quot;Accept-Encoding&quot;: &quot;gzip, deflate&quot;, </span><br><span class="line">    &quot;Content-Length&quot;: &quot;19&quot;, </span><br><span class="line">    &quot;Content-Type&quot;: &quot;application/x-www-form-urlencoded&quot;, </span><br><span class="line">    &quot;Host&quot;: &quot;httpbin.org&quot;, </span><br><span class="line">    &quot;User-Agent&quot;: &quot;python-requests/2.22.0&quot;</span><br><span class="line">  &#125;, </span><br><span class="line">  &quot;json&quot;: null, </span><br><span class="line">  &quot;origin&quot;: &quot;120.85.128.58, 120.85.128.58&quot;, </span><br><span class="line">  &quot;url&quot;: &quot;https://httpbin.org/post&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>成功获得了返回结果，form就是提交的数据</p>
+<h4 id="4-响应"><a href="#4-响应" class="headerlink" title="4.响应"></a>4.响应</h4><p>发送请求后，得到响应，我们可以获取到状态码，响应头，Cookies等</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import requests </span><br><span class="line">r = requests.get(&apos;http://www.jianshu.com&apos;) </span><br><span class="line">print(type(r.status_code),r.status_code) </span><br><span class="line">print(type(r.headers),r.headers) </span><br><span class="line">print(type(r.cookies),r.cookies)</span><br><span class="line">print(type(r.url),r.url) </span><br><span class="line">print(type(r.history),r.history)</span><br></pre></td></tr></table></figure>
+
+<p>输出 status code 属性得到状态码，输出 headers 属性得到响应头，输出 cookies 属性得到 Cookies，输出 url 属性得到 URL，输出 history 属性得到请求历史。<br>状态码：<br><img src="/image/python/34.png" alt="图片"><br><img src="/image/python/35.png" alt="图片"><br><img src="/image/python/36.png" alt="图片"></p>
+<h3 id="高级用法"><a href="#高级用法" class="headerlink" title="高级用法"></a>高级用法</h3><p>requests一些高级用法，如文件上传，Cokkies设置，代理设置</p>
+<h4 id="1-文件上传"><a href="#1-文件上传" class="headerlink" title="1.文件上传"></a>1.文件上传</h4><p>我们可以模拟提交数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">files = &#123;&apos;file&apos;:open(&apos;favicon.ico&apos;,&apos;rb&apos;)&#125;</span><br><span class="line">r = requests.post(&quot;http://httpbin.org/post&quot;,files = files)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></table></figure>
+
+<p>从结果我们可以看到返回响应，里面包含files这个字段</p>
+<h4 id="2-代理设置"><a href="#2-代理设置" class="headerlink" title="2.代理设置"></a>2.代理设置</h4><p>在某些网站，进行大规模爬取是，网站可能会弹出验证码，或者跳转到登录认证页面，更甚者可能会直接封禁客户端的 IP，导致一定时间段内无法访问。<br>为了防止这种情况的发生，或者跳转到登录界面，我们要用到proxies参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">proxies = &#123;</span><br><span class="line">	&quot;http&quot;:&quot;http://user:password@10.10.1.10:3128/&quot;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">requests.get(&quot;https://www.taobao.com&quot;,proxies=proxies)</span><br></pre></td></tr></table></figure>
+
+<p>除了基本的HTTP代理外，requests还支持SOCKS协议的代理<br>需要安装socks这个库：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install &apos;requests[socks]&apos;</span><br></pre></td></tr></table></figure>
+
+<p>然后就可以使用SOCKS协议代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">proxies = &#123;</span><br><span class="line">	&apos;http&apos;:&apos;socks5://user:password@host:port&apos;,</span><br><span class="line">	&apos;https&apos;:&apos;socks5://user:password@host:post&apos;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">requests.get(&quot;https://www.taobao.com&quot;,proxies=proxies)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-超时设置"><a href="#3-超时设置" class="headerlink" title="3.超时设置"></a>3.超时设置</h4><p>在本机网络状况不好或者服务器网络响应太慢甚至无响应时，甚至到最后收不到响应而报错。<br>为了防止服务器不能及时响应，设置一个超时时间，即使超过了这个时间还没有得到响应，那就报错。<br>这里需要timeout参数。这个时间的计算是发出请求到服务器返回响应的时间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">r = requests.get(&quot;https://www.taobao.com&quot;,timeout = 1)</span><br><span class="line">print(r.status_code)</span><br></pre></td></tr></table></figure>
+
+<p>通过这样的方式，我们可以将超时时间设置为 l 秒，如果 l 秒内没有响应，那就抛汁l异常。<br>请求分为两个段落，连接（connect）和读取（read）。<br>上面设置的timeout将用作连接和读取这二者的timeout总和。<br>如果想永久等待，可以直接将timeout设置为None，或者不设置直接留空，因为默认是None。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(&apos;https://www.taobao.com&apos;,timeout = None)</span><br><span class="line">或者直接不加参数：</span><br><span class="line">r = requests.get(&apos;https://www.taobao.com&apos;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-身份认证"><a href="#4-身份认证" class="headerlink" title="4.身份认证"></a>4.身份认证</h4><p><img src="/image/python/37.png" alt="图片"><br>此时可以用requests自带的身份认证功能</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line">from requests.auth import HTTPBasicAuth</span><br><span class="line"></span><br><span class="line">r = requests.get(&apos;http://localhost:5000&apos;,auth = HTTPBasicAuth(&apos;username&apos;,&apos;password&apos;))</span><br><span class="line">print(r.status_code)</span><br></pre></td></tr></table></figure>
+
+<p>如果用户名和密码正确的话，就会自动认证成功，会返回200状态码；如果认证失败，则返回401状态码。<br>requests提供了一个更简单的写法，直接传一个元组，会默认使用HTTPBasicAuth这个类来认证。<br>所以上面的代码可以简化：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import requests</span><br><span class="line"></span><br><span class="line">r = requests.get(&apos;http://localhost:5000&apos;,auth = (&apos;username&apos;,&apos;password&apos;))</span><br><span class="line">print(r.status_code)</span><br></pre></td></tr></table></figure>
+
+<h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><p>我们先来举一个列子：<br>Hello,my phone number is 010-86432100 and email is <a href="mailto:cqc@cuiqingcai.com" target="_blank" rel="noopener">cqc@cuiqingcai.com</a>,and my website is <a href="https://cuiqingcai.com" target="_blank" rel="noopener">https://cuiqingcai.com</a>.<br>这里包含了一个电话号码和一个电子邮件，对于URL来说，可以用下面的正则表达式匹配：<br><img src="/image/python/38.png" alt="图片"><br>写好正则表达式后，就可以拿它去一个长字符串里匹配查找了。 不论这个字符串里面有什么， 只 要符合我们写的规则，统统可以找出来.<br>下面这个表列出了常用的匹配规则<br><img src="/image/python/39.png" alt="图片"></p>
+
       
     </div>
 
@@ -622,6 +669,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/13/Java-Web学习-6-Servlet/" rel="prev" title="Java Web学习(6) Servlet ">
+                Java Web学习(6) Servlet  <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -692,7 +743,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -721,7 +772,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">6</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -844,7 +899,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本库的使用"><span class="nav-number">1.</span> <span class="nav-text">基本库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-urllib库"><span class="nav-number">1.1.</span> <span class="nav-text">1.urllib库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-发送请求"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.发送请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-传递参数"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.传递参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-data-参数"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.data 参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-timeout-参数"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2.timeout 参数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Request"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.Request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-高级用法"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.高级用法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-验证"><span class="nav-number">1.1.4.0.1.</span> <span class="nav-text">1.验证</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-代理"><span class="nav-number">1.1.4.0.2.</span> <span class="nav-text">2.代理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-处理异常"><span class="nav-number">1.2.</span> <span class="nav-text">2.处理异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-URLError"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.URLError</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTPError"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.HTTPError</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-解释链接"><span class="nav-number">1.3.</span> <span class="nav-text">3.解释链接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-urlparse"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.urlparse()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-urlunparse"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.urlunparse()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-urlsplit"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.urlsplit()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-urlunsplit"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.urlunsplit()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-urljoin"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.urljoin()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-urlencode"><span class="nav-number">1.3.6.</span> <span class="nav-text">6.urlencode()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-parse-qs"><span class="nav-number">1.3.7.</span> <span class="nav-text">7.parse_qs()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-parse-qsl"><span class="nav-number">1.3.8.</span> <span class="nav-text">8.parse_qsl()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-quote"><span class="nav-number">1.3.9.</span> <span class="nav-text">9.quote()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-unquote"><span class="nav-number">1.3.10.</span> <span class="nav-text">10.unquote()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-分析-Robots-协议"><span class="nav-number">1.4.</span> <span class="nav-text">4.分析 Robots 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Robots-协议"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.Robots 协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-爬虫名称"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.爬虫名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-robotparser"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.robotparser</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用-requests"><span class="nav-number">2.</span> <span class="nav-text">2.使用 requests</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-实例"><span class="nav-number">2.0.1.</span> <span class="nav-text">1.实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-GET请求"><span class="nav-number">2.0.2.</span> <span class="nav-text">2.GET请求</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-抓取网页"><span class="nav-number">2.0.2.1.</span> <span class="nav-text">1.抓取网页</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本库的使用"><span class="nav-number">1.</span> <span class="nav-text">基本库的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-urllib库"><span class="nav-number">1.1.</span> <span class="nav-text">1.urllib库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-发送请求"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.发送请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-传递参数"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.传递参数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-data-参数"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">1.data 参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-timeout-参数"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">2.timeout 参数</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Request"><span class="nav-number">1.1.3.</span> <span class="nav-text">3.Request</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-高级用法"><span class="nav-number">1.1.4.</span> <span class="nav-text">4.高级用法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-验证"><span class="nav-number">1.1.4.0.1.</span> <span class="nav-text">1.验证</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-代理"><span class="nav-number">1.1.4.0.2.</span> <span class="nav-text">2.代理</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-处理异常"><span class="nav-number">1.2.</span> <span class="nav-text">2.处理异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-URLError"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.URLError</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTPError"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.HTTPError</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-解释链接"><span class="nav-number">1.3.</span> <span class="nav-text">3.解释链接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-urlparse"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.urlparse()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-urlunparse"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.urlunparse()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-urlsplit"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.urlsplit()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-urlunsplit"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.urlunsplit()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-urljoin"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.urljoin()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-urlencode"><span class="nav-number">1.3.6.</span> <span class="nav-text">6.urlencode()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-parse-qs"><span class="nav-number">1.3.7.</span> <span class="nav-text">7.parse_qs()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-parse-qsl"><span class="nav-number">1.3.8.</span> <span class="nav-text">8.parse_qsl()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-quote"><span class="nav-number">1.3.9.</span> <span class="nav-text">9.quote()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-unquote"><span class="nav-number">1.3.10.</span> <span class="nav-text">10.unquote()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-分析-Robots-协议"><span class="nav-number">1.4.</span> <span class="nav-text">4.分析 Robots 协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Robots-协议"><span class="nav-number">1.4.1.</span> <span class="nav-text">1.Robots 协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-爬虫名称"><span class="nav-number">1.4.2.</span> <span class="nav-text">2.爬虫名称</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-robotparser"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.robotparser</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#2-使用-requests"><span class="nav-number">2.</span> <span class="nav-text">2.使用 requests</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基本用法"><span class="nav-number">2.1.</span> <span class="nav-text">1.基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-实例"><span class="nav-number">2.1.1.</span> <span class="nav-text">1.实例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-GET请求"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.GET请求</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-抓取网页"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">1.抓取网页</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-POST-请求"><span class="nav-number">2.1.3.</span> <span class="nav-text">3.POST 请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-响应"><span class="nav-number">2.1.4.</span> <span class="nav-text">4.响应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级用法"><span class="nav-number">2.2.</span> <span class="nav-text">高级用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-文件上传"><span class="nav-number">2.2.1.</span> <span class="nav-text">1.文件上传</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-代理设置"><span class="nav-number">2.2.2.</span> <span class="nav-text">2.代理设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-超时设置"><span class="nav-number">2.2.3.</span> <span class="nav-text">3.超时设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-身份认证"><span class="nav-number">2.2.4.</span> <span class="nav-text">4.身份认证</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正则表达式"><span class="nav-number">2.3.</span> <span class="nav-text">正则表达式</span></a></li></ol></li></div>
             
 
           </div>
@@ -877,7 +932,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">15k</span>
+    <span title="站点总字数">19k</span>
   
 
   
@@ -886,7 +941,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">14 分钟</span>
+    <span title="站点阅读时长">18 分钟</span>
   
 </div>
 
