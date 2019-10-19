@@ -95,19 +95,19 @@
 
 
 
-  <meta name="description" content="今天刚刚学习到的新知识 1.认识ServletServlet 是运行在 Web 服务器端的 java 应用程序，可以生成动态的 Web 页面 2.建立Servlet我们要在相应的web文件夹下建立classes和lib文件夹，然后想对应配置好然后建立一个Servlet类，命名为MyFirstServlet 1234567891011121314151617181920212223242526272">
+  <meta name="description" content="1.认识ServletServlet 是运行在 Web 服务器端的 java 应用程序，可以生成动态的 Web 页面 2.建立Servlet我们要在相应的web文件夹下建立classes和lib文件夹，然后想对应配置好然后建立一个Servlet类，命名为MyFirstServlet 12345678910111213141516171819202122232425262728293031packa">
 <meta name="keywords" content="学习,分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Web学习(6) Servlet ">
 <meta property="og:url" content="http://yoursite.com/2019/10/13/Java-Web学习-6-Servlet/index.html">
 <meta property="og:site_name" content="Odousang&#39;s Blog">
-<meta property="og:description" content="今天刚刚学习到的新知识 1.认识ServletServlet 是运行在 Web 服务器端的 java 应用程序，可以生成动态的 Web 页面 2.建立Servlet我们要在相应的web文件夹下建立classes和lib文件夹，然后想对应配置好然后建立一个Servlet类，命名为MyFirstServlet 1234567891011121314151617181920212223242526272">
+<meta property="og:description" content="1.认识ServletServlet 是运行在 Web 服务器端的 java 应用程序，可以生成动态的 Web 页面 2.建立Servlet我们要在相应的web文件夹下建立classes和lib文件夹，然后想对应配置好然后建立一个Servlet类，命名为MyFirstServlet 12345678910111213141516171819202122232425262728293031packa">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/image/Servlet/1.png">
-<meta property="og:updated_time" content="2019-10-14T08:39:32.728Z">
+<meta property="og:updated_time" content="2019-10-18T08:38:01.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Web学习(6) Servlet ">
-<meta name="twitter:description" content="今天刚刚学习到的新知识 1.认识ServletServlet 是运行在 Web 服务器端的 java 应用程序，可以生成动态的 Web 页面 2.建立Servlet我们要在相应的web文件夹下建立classes和lib文件夹，然后想对应配置好然后建立一个Servlet类，命名为MyFirstServlet 1234567891011121314151617181920212223242526272">
+<meta name="twitter:description" content="1.认识ServletServlet 是运行在 Web 服务器端的 java 应用程序，可以生成动态的 Web 页面 2.建立Servlet我们要在相应的web文件夹下建立classes和lib文件夹，然后想对应配置好然后建立一个Servlet类，命名为MyFirstServlet 12345678910111213141516171819202122232425262728293031packa">
 <meta name="twitter:image" content="http://yoursite.com/image/Servlet/1.png">
 
 
@@ -427,8 +427,7 @@
       
 
       
-        <p>今天刚刚学习到的新知识</p>
-<h2 id="1-认识Servlet"><a href="#1-认识Servlet" class="headerlink" title="1.认识Servlet"></a>1.认识Servlet</h2><p>Servlet 是运行在 Web 服务器端的 java 应用程序，可以生成动态的 Web 页面</p>
+        <h2 id="1-认识Servlet"><a href="#1-认识Servlet" class="headerlink" title="1.认识Servlet"></a>1.认识Servlet</h2><p>Servlet 是运行在 Web 服务器端的 java 应用程序，可以生成动态的 Web 页面</p>
 <h2 id="2-建立Servlet"><a href="#2-建立Servlet" class="headerlink" title="2.建立Servlet"></a>2.建立Servlet</h2><p><img src="/image/Servlet/1.png" alt="图片"><br>我们要在相应的web文件夹下建立classes和lib文件夹，然后想对应配置好<br>然后建立一个Servlet类，命名为MyFirstServlet</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package Servelt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import javax.servlet.ServletException;</span><br><span class="line">import javax.servlet.http.HttpServlet;</span><br><span class="line">import javax.servlet.http.HttpServletRequest;</span><br><span class="line">import javax.servlet.http.HttpServletResponse;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.util.Date;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * servlet</span><br><span class="line"> * 开发者不会去new MyFirstServlet</span><br><span class="line"> */</span><br><span class="line">public class MyFirstServlet extends HttpServlet &#123;</span><br><span class="line">    // 覆盖doGet() / doPost() 方法</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">        // 向浏览器输出内容</span><br><span class="line">        // 设置编码</span><br><span class="line">        response.setContentType(&quot;text/html;charset=utf-8&quot;);</span><br><span class="line">        response.getWriter().write(&quot;hello, 这是我的第一个Servlet...&quot;);</span><br><span class="line">        response.getWriter().write(&quot;当前系统时间是：&quot;+new Date());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -436,17 +435,19 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;MyFirstServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;Servelt.MyFirstServlet&lt;/servlet-class&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">    &lt;servlet-name&gt;MyFirstServlet&lt;/servlet-name&gt;</span><br><span class="line">    &lt;url-pattern&gt;/MyFirstServlet&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure>
 
 <p>我们配置好后，就可以启动Tomcat服务<br>然后进入我们所创建的Servlet<br>http：//服务器：端口/项目模拟目录名/servlet/&gt;MyFirstServlet</p>
-<h2 id="3-Servlet生命周期"><a href="#3-Servlet生命周期" class="headerlink" title="3.Servlet生命周期"></a>3.Servlet生命周期</h2><p>1.init()方法<br>第一次调用Servlet时，将会创建一个实例<br>2.doGet()/doPost()/service()方法<br>doGet()以get方式请求Servlet时运行。常见的get请求方式链接，get方式表单提交，直接访问等。<br>doPost()以post方式请求Servlet时运行。常见的post请求方式为post方式表单提交。<br>3.destory()方法<br>destory()方法在Servlet实例消亡的时候自动调用。</p>
-<h2 id="4-Servlet与JSP内置对象"><a href="#4-Servlet与JSP内置对象" class="headerlink" title="4.Servlet与JSP内置对象"></a>4.Servlet与JSP内置对象</h2><p>1.获取out对象<br>JSP中的out对象对应于Servlet中”javax.servlet.jsp.JspWriter”.</p>
+<h2 id="3-Servlet生命周期"><a href="#3-Servlet生命周期" class="headerlink" title="3.Servlet生命周期"></a>3.Servlet生命周期</h2><h3 id="1-init-方法"><a href="#1-init-方法" class="headerlink" title="1.init()方法"></a>1.init()方法</h3><p>第一次调用Servlet时，将会创建一个实例</p>
+<h3 id="2-doGet-doPost-service-方法"><a href="#2-doGet-doPost-service-方法" class="headerlink" title="2.doGet()/doPost()/service()方法"></a>2.doGet()/doPost()/service()方法</h3><p>doGet()以get方式请求Servlet时运行。常见的get请求方式链接，get方式表单提交，直接访问等。<br>doPost()以post方式请求Servlet时运行。常见的post请求方式为post方式表单提交。</p>
+<h3 id="3-destory-方法"><a href="#3-destory-方法" class="headerlink" title="3.destory()方法"></a>3.destory()方法</h3><p>destory()方法在Servlet实例消亡的时候自动调用。</p>
+<h2 id="4-Servlet与JSP内置对象"><a href="#4-Servlet与JSP内置对象" class="headerlink" title="4.Servlet与JSP内置对象"></a>4.Servlet与JSP内置对象</h2><h3 id="1-获取out对象"><a href="#1-获取out对象" class="headerlink" title="1.获取out对象"></a>1.获取out对象</h3><p>JSP中的out对象对应于Servlet中”javax.servlet.jsp.JspWriter”.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import java.io.PrintWriter;</span><br><span class="line"></span><br><span class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		response.setContentType(&quot;text/html;charset = gb2312&quot;);</span><br><span class="line">        PrintWriter out = response.getWriter();</span><br><span class="line">        //使用out对象</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>2.获得request和response对象<br>Servlet获取JSP中的request和response很容易，因为参数都传给了doXXX()方法中了</p>
+<h3 id="2-获得request和response对象"><a href="#2-获得request和response对象" class="headerlink" title="2.获得request和response对象"></a>2.获得request和response对象</h3><p>Servlet获取JSP中的request和response很容易，因为参数都传给了doXXX()方法中了</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		//将request参数当成request对象使用</span><br><span class="line">		//将response参数当成response对象使用</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>3.获得session对象<br>session对象对应的是HttpSession接口</p>
+<h3 id="3-获得session对象"><a href="#3-获得session对象" class="headerlink" title="3.获得session对象"></a>3.获得session对象</h3><p>session对象对应的是HttpSession接口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import javax.servlet.http.HttpSession;</span><br><span class="line">.....</span><br><span class="line"></span><br><span class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		HttpSession session = request.getSession();</span><br><span class="line">		//将session当成session对象来使用</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<p>4.获得application对象<br>application对象对应的是ServletContext接口</p>
+<h3 id="4-获得application对象"><a href="#4-获得application对象" class="headerlink" title="4.获得application对象"></a>4.获得application对象</h3><p>application对象对应的是ServletContext接口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import javax.servlet.ServletContext;</span><br><span class="line">......</span><br><span class="line"></span><br><span class="line">protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException &#123;</span><br><span class="line">		ServletContext application = this.ServletContext();</span><br><span class="line">		//将application当成application对象使用</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>除此之外，还可以使用application来实现服务器内跳转<br>(1)重定向</p>
@@ -463,19 +464,19 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page contentType=&quot;text/html;charset=UTF-8&quot; language=&quot;java&quot; %&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">     欢迎来到本系统&lt;br&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>当我们设置完欢迎页面后，只要在目录输入 <a href="http://localhost:8080/Servlect/" target="_blank" rel="noopener">http://localhost:8080/Servlect/</a><br>就会来到欢迎页面，不用像以前那样输入完整路径<br>web.xml可以同时设置多个欢迎页面，默认第一个，如果找不到最前面的页面吧，就会往下选择</p>
-<h2 id="6-在Servlet中读取参数"><a href="#6-在Servlet中读取参数" class="headerlink" title="6.在Servlet中读取参数"></a>6.在Servlet中读取参数</h2><p>1.web.xml文件有两种类型的参数设定<br>(1)设置全局参数，该参数设置所有的Servlet都可以访问</p>
+<h2 id="6-在Servlet中读取参数"><a href="#6-在Servlet中读取参数" class="headerlink" title="6.在Servlet中读取参数"></a>6.在Servlet中读取参数</h2><h3 id="1-web-xml文件有两种类型的参数设定"><a href="#1-web-xml文件有两种类型的参数设定" class="headerlink" title="1.web.xml文件有两种类型的参数设定"></a>1.web.xml文件有两种类型的参数设定</h3><p>(1)设置全局参数，该参数设置所有的Servlet都可以访问</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;context-param&gt;</span><br><span class="line">    &lt;param-name&gt;参数名&lt;/param-name&gt;</span><br><span class="line">    &lt;param-value&gt;参数值&lt;/param-value&gt;</span><br><span class="line">&lt;/context-param&gt;</span><br></pre></td></tr></table></figure>
 
 <p>(2)设置局部参数，只有相对应的Servlet</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;servlet&gt;</span><br><span class="line">    &lt;servlet-name&gt;Servlet 名称&lt;/servlet-name&gt;</span><br><span class="line">    &lt;servlet-class&gt;Servlet 类路径&lt;/servlet-class&gt;</span><br><span class="line">    &lt;init-param&gt;</span><br><span class="line">    	&lt;param-name&gt;参数名&lt;/param-name&gt;</span><br><span class="line">    	&lt;param-value&gt;参数值&lt;/param-value&gt;</span><br><span class="line">    &lt;/init-param&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br></pre></td></tr></table></figure>
 
-<p>2.获取参数<br>(1)获取全局参数</p>
+<h3 id="2-获取参数"><a href="#2-获取参数" class="headerlink" title="2.获取参数"></a>2.获取参数</h3><p>(1)获取全局参数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ServletContext application = this.ServletContext();</span><br><span class="line">application getInitParameter(&quot;参数名称&quot;);</span><br></pre></td></tr></table></figure>
 
 <p>(2)获取局部参数</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.getInitParameter(&quot;参数名称&quot;);</span><br></pre></td></tr></table></figure>
 
-<h2 id="7-使用过滤器"><a href="#7-使用过滤器" class="headerlink" title="7.使用过滤器"></a>7.使用过滤器</h2><p>1.编写过滤器<br>Servlet过滤器可以当作一个只需要在Web.xml文件中配置就可以灵活使用，可以重用的的模块化组件<br>(1)实现接口</p>
+<h2 id="7-使用过滤器"><a href="#7-使用过滤器" class="headerlink" title="7.使用过滤器"></a>7.使用过滤器</h2><h3 id="1-编写过滤器"><a href="#1-编写过滤器" class="headerlink" title="1.编写过滤器"></a>1.编写过滤器</h3><p>Servlet过滤器可以当作一个只需要在Web.xml文件中配置就可以灵活使用，可以重用的的模块化组件<br>(1)实现接口</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javax.servlet,Filter;</span><br></pre></td></tr></table></figure>
 
 <p>(2)实现3个方法<br>①初始化方法</p>
@@ -573,6 +574,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/10/16/Java-Web学习-7-JavaBean/" rel="prev" title="Java Web学习(7) JavaBean">
+                Java Web学习(7) JavaBean <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -642,7 +647,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -798,7 +803,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-认识Servlet"><span class="nav-number">1.</span> <span class="nav-text">1.认识Servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-建立Servlet"><span class="nav-number">2.</span> <span class="nav-text">2.建立Servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Servlet生命周期"><span class="nav-number">3.</span> <span class="nav-text">3.Servlet生命周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Servlet与JSP内置对象"><span class="nav-number">4.</span> <span class="nav-text">4.Servlet与JSP内置对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-设置欢迎页面"><span class="nav-number">5.</span> <span class="nav-text">5.设置欢迎页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-在Servlet中读取参数"><span class="nav-number">6.</span> <span class="nav-text">6.在Servlet中读取参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-使用过滤器"><span class="nav-number">7.</span> <span class="nav-text">7.使用过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-异常处理"><span class="nav-number">8.</span> <span class="nav-text">8.异常处理</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-认识Servlet"><span class="nav-number">1.</span> <span class="nav-text">1.认识Servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-建立Servlet"><span class="nav-number">2.</span> <span class="nav-text">2.建立Servlet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Servlet生命周期"><span class="nav-number">3.</span> <span class="nav-text">3.Servlet生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-init-方法"><span class="nav-number">3.1.</span> <span class="nav-text">1.init()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-doGet-doPost-service-方法"><span class="nav-number">3.2.</span> <span class="nav-text">2.doGet()/doPost()/service()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-destory-方法"><span class="nav-number">3.3.</span> <span class="nav-text">3.destory()方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Servlet与JSP内置对象"><span class="nav-number">4.</span> <span class="nav-text">4.Servlet与JSP内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-获取out对象"><span class="nav-number">4.1.</span> <span class="nav-text">1.获取out对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-获得request和response对象"><span class="nav-number">4.2.</span> <span class="nav-text">2.获得request和response对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-获得session对象"><span class="nav-number">4.3.</span> <span class="nav-text">3.获得session对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-获得application对象"><span class="nav-number">4.4.</span> <span class="nav-text">4.获得application对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-设置欢迎页面"><span class="nav-number">5.</span> <span class="nav-text">5.设置欢迎页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-在Servlet中读取参数"><span class="nav-number">6.</span> <span class="nav-text">6.在Servlet中读取参数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-web-xml文件有两种类型的参数设定"><span class="nav-number">6.1.</span> <span class="nav-text">1.web.xml文件有两种类型的参数设定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-获取参数"><span class="nav-number">6.2.</span> <span class="nav-text">2.获取参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-使用过滤器"><span class="nav-number">7.</span> <span class="nav-text">7.使用过滤器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-编写过滤器"><span class="nav-number">7.1.</span> <span class="nav-text">1.编写过滤器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-异常处理"><span class="nav-number">8.</span> <span class="nav-text">8.异常处理</span></a></li></ol></div>
             
 
           </div>
@@ -831,7 +836,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">28k</span>
+    <span title="站点总字数">37k</span>
   
 
   
@@ -840,7 +845,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">25 分钟</span>
+    <span title="站点阅读时长">34 分钟</span>
   
 </div>
 
