@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-10-19T02:49:56.399Z</updated>
+  <updated>2019-10-29T13:09:43.297Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构和算法分析 - Part1 1.程序选择问题</title>
+    <link href="http://yoursite.com/2019/10/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90-Part1-1-%E7%A8%8B%E5%BA%8F%E9%80%89%E6%8B%A9%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2019/10/19/数据结构和算法分析-Part1-1-程序选择问题/</id>
+    <published>2019-10-18T16:00:00.000Z</published>
+    <updated>2019-10-29T13:09:43.297Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;练习&quot;&gt;&lt;a href=&quot;#练习&quot; class=&quot;headerlink&quot; title=&quot;练习&quot;&gt;&lt;/a&gt;练习&lt;/h2&gt;&lt;p&gt;1.令 k = N/2，画出表格显示程序对于N种不同的值的运行时间。&lt;/p&gt;
+&lt;figure class=&quot;highlight
+        
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+      <category term="数据结构和算法分析" scheme="http://yoursite.com/categories/Java/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/"/>
+    
+    
+      <category term="学习" scheme="http://yoursite.com/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="分享" scheme="http://yoursite.com/tags/%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="练习" scheme="http://yoursite.com/tags/%E7%BB%83%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>Java Web学习(7) JavaBean</title>
