@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+<link rel="stylesheet" href="/css/main.css?v=7.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.2.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    }
+  };
+</script>
+
+
+
+  <meta name="description" content="练习1.设计一个泛型类orderedCollection，它存储的Comparable对象的集合（在数组中），以及该集合的当前大小。提供public方法isEmpty，makeEmpty，insert，remove，findMin和findMax。finfMin和findMax分别返回该集合中最小的和最大T对象的引用（如果该集合为空，则返回null） 12345678910111213141516">
+<meta name="keywords" content="学习,分享,练习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构和算法分析 - Part1 4.泛型OrderedCollection">
+<meta property="og:url" content="http://yoursite.com/2019/10/20/数据结构和算法分析-Part1-4-泛型OrderedCollection/index.html">
+<meta property="og:site_name" content="Odousang&#39;s Blog">
+<meta property="og:description" content="练习1.设计一个泛型类orderedCollection，它存储的Comparable对象的集合（在数组中），以及该集合的当前大小。提供public方法isEmpty，makeEmpty，insert，remove，findMin和findMax。finfMin和findMax分别返回该集合中最小的和最大T对象的引用（如果该集合为空，则返回null） 12345678910111213141516">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-10-31T08:23:55.065Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据结构和算法分析 - Part1 4.泛型OrderedCollection">
+<meta name="twitter:description" content="练习1.设计一个泛型类orderedCollection，它存储的Comparable对象的集合（在数组中），以及该集合的当前大小。提供public方法isEmpty，makeEmpty，insert，remove，findMin和findMax。finfMin和findMax分别返回该集合中最小的和最大T对象的引用（如果该集合为空，则返回null） 12345678910111213141516">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Odousang's Blog" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/10/20/数据结构和算法分析-Part1-4-泛型OrderedCollection/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>数据结构和算法分析 - Part1 4.泛型OrderedCollection | Odousang's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Odousang's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">愿我知足且上进，温柔而坚定</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/20/数据结构和算法分析-Part1-4-泛型OrderedCollection/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="何文浩">
+      <meta itemprop="description" content="一个向往着生活的外星系程序员">
+      <meta itemprop="image" content="/images/header.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Odousang's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数据结构和算法分析 - Part1 4.泛型OrderedCollection
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          <br>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">本文字数：</span>
+              
+              <span title="本文字数">4.8k</span>
+            </span>
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              
+              <span title="阅读时长">4 分钟</span>
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>1.设计一个泛型类orderedCollection，它存储的Comparable对象的集合（在数组中），以及该集合的当前大小。<br>提供public方法isEmpty，makeEmpty，insert，remove，findMin和findMax。<br>finfMin和findMax分别返回该集合中最小的和最大T对象的引用（如果该集合为空，则返回null）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br></pre></td><td class="code"><pre><span class="line">package Part1;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 设计一个泛型类orderedCollection，它存储的Comparable对象的集合（在数组中），以及该集合的当前大小。</span><br><span class="line"> * 提供public方法isEmpty，makeEmpty，insert，remove，findMin和findMax。</span><br><span class="line"> * finfMin和findMax分别返回该集合中最小的和最大T对象的引用（如果该集合为空，则返回null）</span><br><span class="line"> *</span><br><span class="line"> * */</span><br><span class="line"></span><br><span class="line">public class OrderedCollection&lt;E&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private Comparable[] elementdata;</span><br><span class="line"></span><br><span class="line">    public void setElementdata(Comparable[] comparables) &#123;</span><br><span class="line">        this.elementdata = comparables;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Comparable[] getElementdata() &#123;</span><br><span class="line">        return elementdata;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        Collection&lt;String&gt; collectionTest = new Collection&lt;String&gt;();</span><br><span class="line">        Comparable[] comparables = new Comparable[]&#123;&quot;9&quot;&#125;;</span><br><span class="line">        collectionTest.setElementData(comparables);</span><br><span class="line"></span><br><span class="line">        collectionTest.insert(&quot;1&quot;);</span><br><span class="line">        collectionTest.insert(&quot;2&quot;);</span><br><span class="line">        collectionTest.insert(&quot;3&quot;);</span><br><span class="line">        collectionTest.insert(&quot;4&quot;);</span><br><span class="line">        System.err.println(Arrays.toString(collectionTest.getElementdata()));   //输出返回的数组值</span><br><span class="line"></span><br><span class="line">        collectionTest.remove(0);</span><br><span class="line">        System.err.println(Arrays.toString(collectionTest.getElementdata()));</span><br><span class="line">        collectionTest.remove(&quot;2&quot;);</span><br><span class="line">        System.err.println(Arrays.toString(collectionTest.getElementdata()));</span><br><span class="line"></span><br><span class="line">        boolean com = collectionTest.isEmtpy();</span><br><span class="line">        System.err.println(&quot;isEmpty = &quot; + com);</span><br><span class="line"></span><br><span class="line">        boolean com1 = collectionTest.isPresent(&quot;1&quot;);</span><br><span class="line">        System.err.println(&quot;isPresent = &quot; + com1);</span><br><span class="line"></span><br><span class="line">        //</span><br><span class="line">        boolean com2 = collectionTest.isEmtpy();</span><br><span class="line">        System.err.println(&quot;isEmpty = &quot; + com2);</span><br><span class="line">        System.err.println(&quot;Min:&quot; + collectionTest.findxin());</span><br><span class="line">        System.err.println(&quot;Man:&quot; + collectionTest.findMax());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //查找最大值</span><br><span class="line">    public Comparable&lt;E&gt; findMax() &#123;</span><br><span class="line">        if (elementdata == null ||elementdata.length == 0)&#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        int index = 0;</span><br><span class="line">        for (int i  = 0;i &lt; elementdata.length; i++)&#123;</span><br><span class="line">            if (elementdata[i].compareTo(elementdata[index]) &gt; 0 )&#123;</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return elementdata[index];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //查找最小值</span><br><span class="line">    public Comparable&lt;E&gt; findxin() &#123;</span><br><span class="line">        if (elementdata == null ||elementdata.length == 0)&#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">        int index = 0;</span><br><span class="line">        for (int i  = 0;i &lt; elementdata.length; i++)&#123;</span><br><span class="line">            if (elementdata[i].compareTo(elementdata[index]) &lt; 0 )&#123;</span><br><span class="line">                index = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return elementdata[index];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //插入方法</span><br><span class="line">    public void insert(Comparable comparables) &#123;</span><br><span class="line">        int length = elementdata.length;</span><br><span class="line">        Comparable[] temp = new Comparable[length + 1];   //temp数组长度比elementdata数组长一个位</span><br><span class="line">        System.arraycopy(elementdata,0,temp,0,length);</span><br><span class="line">        //它可以实现将一个数组的指定个数元素复制到另一个数组中</span><br><span class="line">        //将elementdata数组从索引为0开始复制到temp数组索引为0的位置上，复制的长度为elementdata数组的长度</span><br><span class="line">        temp[length] = comparables;  //插入的字符传进来到length这位</span><br><span class="line">        elementdata = temp;    //temp数组传回去elementdata数组</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //清空方法</span><br><span class="line">    public boolean isEmtpy() &#123;</span><br><span class="line">        return elementdata.length == 0;    //清空，置0</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //Collection不为null,但是元素个数为0</span><br><span class="line">    public void makeEmpty() &#123;</span><br><span class="line">        elementdata = new Comparable[]&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //移除方法   数组类型移除</span><br><span class="line">    public void remove(E comparables) &#123;</span><br><span class="line">        if (elementdata == null || comparables == null)&#123;   //  递归  基准情况</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        int length = elementdata.length;</span><br><span class="line">        for (int i = 0; i &lt; length; i++)&#123;</span><br><span class="line">            if (elementdata[i] != null &amp;&amp; elementdata[i] == comparables)&#123;    //循环判断</span><br><span class="line">                Comparable[] temp = new Comparable[length - 1];  //长度比elementdata数组少一位</span><br><span class="line">                System.arraycopy(elementdata,0,temp,0,i);  //前面相同的就直接复制，直到i的长度</span><br><span class="line">                System.arraycopy(elementdata,i + 1,temp,i,length - i - 1);    //不同的由i的位置开始复制，长度为剩下的长度</span><br><span class="line">                elementdata = temp;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //移除方法   数组下标移除</span><br><span class="line">    public void remove(int idnex)&#123;</span><br><span class="line">        if (idnex &lt; 0 || elementdata == null)&#123;    //  递归  基准情况</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        int length = elementdata.length;</span><br><span class="line">        if ((length - 1) &lt; idnex)&#123;     //如果要移除的下标比index小，就返回</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        Comparable[] temp = new Comparable[length - 1];</span><br><span class="line">        System.arraycopy(elementdata,0,temp,0,idnex);    //前面相同的就直接复制，直到idnex下标的位置</span><br><span class="line">        System.arraycopy(elementdata,idnex + 1,temp,idnex,length - idnex - 1);</span><br><span class="line">        //不同的则由idnex的位置开始复制，长度为剩下的长度</span><br><span class="line">        elementdata = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+      
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        
+          
+        
+        <div class="post-tags">
+          
+            <a href="/tags/学习/" rel="tag"># 学习</a>
+          
+            <a href="/tags/分享/" rel="tag"># 分享</a>
+          
+            <a href="/tags/练习/" rel="tag"># 练习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/20/数据结构和算法分析-Part1-3-泛型Collection/" rel="next" title="数据结构和算法分析 - Part1 3.泛型Collection">
+                <i class="fa fa-chevron-left"></i> 数据结构和算法分析 - Part1 3.泛型Collection
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/header.jpg" alt="何文浩">
+            
+              <p class="site-author-name" itemprop="name">何文浩</p>
+              <div class="site-description motion-element" itemprop="description">一个向往着生活的外星系程序员</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/odousnag" title="GitHub &rarr; https://github.com/odousnag" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/169530260@qq.com" title="E-Mail &rarr; 169530260@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/hwh15915042241" title="Wechat &rarr; hwh15915042241"><i class="fa fa-fw fa-wechat"></i>Wechat</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="/1695303260" title="qq &rarr; 1695303260"><i class="fa fa-fw fa-qq"></i>qq</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://www.zhihu.com/people/xiang-xin-wo-men-14/activities" title="zhihu &rarr; https://www.zhihu.com/people/xiang-xin-wo-men-14/activities" rel="noopener" target="_blank"><i class="fa fa-fw fa-zhihu"></i>zhihu</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#练习"><span class="nav-number">1.</span> <span class="nav-text">练习</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">何文浩</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="站点总字数">49k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="站点阅读时长">45 分钟</span>
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+  
+    
+    
+  
+  <script color="0,0,255" opacity="0.5" zindex="-1" count="99" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=3.4.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+
+
+  <script src="/js/utils.js?v=7.2.0"></script>
+
+  <script src="/js/motion.js?v=7.2.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.2.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.2.0"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
+
+  <script src="/js/next-boot.js?v=7.2.0"></script>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"node_modules/live2d-widget-models-master/packages","model":{"jsonPath":"live2d-widget-model-tororo"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
