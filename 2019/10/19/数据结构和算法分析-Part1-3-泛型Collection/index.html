@@ -95,18 +95,18 @@
 
 
 
-  <meta name="description" content="练习1.编写下列带有声明的例程public void permute(String str);public void permute(char[] str, int low, int high);第一个例证是个驱动程序调用第二个例证并显示String str 中的字符的所有排列。如果‘str’是‘abc’，那么输出的串则是abc，acb，bca，cab，cba第二个方法使用递归 123456789">
+  <meta name="description" content="练习1.要求：设计一个泛型类Collection，它存储object对象的集合（在数组中），以及该集合当前的大小。提供public方法isEmtpy，makeEmpty,insert,remove,isPresent.方法isPresent(x)当且仅当在集合中存在（由equals定义） 等于x的一个object时返回true 12345678910111213141516171819202122">
 <meta name="keywords" content="学习,分享,练习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构和算法分析 - Part1 2.排序">
-<meta property="og:url" content="http://yoursite.com/2019/10/19/数据结构和算法分析-Part1-2-排序/index.html">
+<meta property="og:title" content="数据结构和算法分析 - Part1 3.泛型Collection">
+<meta property="og:url" content="http://yoursite.com/2019/10/19/数据结构和算法分析-Part1-3-泛型Collection/index.html">
 <meta property="og:site_name" content="Odousang&#39;s Blog">
-<meta property="og:description" content="练习1.编写下列带有声明的例程public void permute(String str);public void permute(char[] str, int low, int high);第一个例证是个驱动程序调用第二个例证并显示String str 中的字符的所有排列。如果‘str’是‘abc’，那么输出的串则是abc，acb，bca，cab，cba第二个方法使用递归 123456789">
+<meta property="og:description" content="练习1.要求：设计一个泛型类Collection，它存储object对象的集合（在数组中），以及该集合当前的大小。提供public方法isEmtpy，makeEmpty,insert,remove,isPresent.方法isPresent(x)当且仅当在集合中存在（由equals定义） 等于x的一个object时返回true 12345678910111213141516171819202122">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-29T14:36:41.991Z">
+<meta property="og:updated_time" content="2019-10-31T07:12:06.132Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构和算法分析 - Part1 2.排序">
-<meta name="twitter:description" content="练习1.编写下列带有声明的例程public void permute(String str);public void permute(char[] str, int low, int high);第一个例证是个驱动程序调用第二个例证并显示String str 中的字符的所有排列。如果‘str’是‘abc’，那么输出的串则是abc，acb，bca，cab，cba第二个方法使用递归 123456789">
+<meta name="twitter:title" content="数据结构和算法分析 - Part1 3.泛型Collection">
+<meta name="twitter:description" content="练习1.要求：设计一个泛型类Collection，它存储object对象的集合（在数组中），以及该集合当前的大小。提供public方法isEmtpy，makeEmpty,insert,remove,isPresent.方法isPresent(x)当且仅当在集合中存在（由equals定义） 等于x的一个object时返回true 12345678910111213141516171819202122">
 
 
 
@@ -116,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/2019/10/19/数据结构和算法分析-Part1-2-排序/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/19/数据结构和算法分析-Part1-3-泛型Collection/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>数据结构和算法分析 - Part1 2.排序 | Odousang's Blog</title>
+  <title>数据结构和算法分析 - Part1 3.泛型Collection | Odousang's Blog</title>
   
 
 
@@ -337,7 +337,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/数据结构和算法分析-Part1-2-排序/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/数据结构和算法分析-Part1-3-泛型Collection/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="何文浩">
@@ -354,7 +354,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据结构和算法分析 - Part1 2.排序
+          <h1 class="post-title" itemprop="name headline">数据结构和算法分析 - Part1 3.泛型Collection
 
               
             
@@ -394,7 +394,7 @@
               
                 <span class="post-meta-item-text">本文字数：</span>
               
-              <span title="本文字数">1.8k</span>
+              <span title="本文字数">4.1k</span>
             </span>
           
 
@@ -406,7 +406,7 @@
               
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
               
-              <span title="阅读时长">2 分钟</span>
+              <span title="阅读时长">4 分钟</span>
             </span>
           
 
@@ -425,8 +425,10 @@
       
 
       
-        <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>1.编写下列带有声明的例程<br>public void permute(String str);<br>public void permute(char[] str, int low, int high);<br>第一个例证是个驱动程序<br>调用第二个例证并显示String str 中的字符的所有排列。<br>如果‘str’是‘abc’，那么输出的串则是abc，acb，bca，cab，cba<br>第二个方法使用递归</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">package Part1;</span><br><span class="line"></span><br><span class="line">/*</span><br><span class="line">public void permute(String str);</span><br><span class="line">public void permute(char[] str, int low, int high);</span><br><span class="line">* 第一个例证是个驱动程序</span><br><span class="line">*调用第二个例证并显示String str 中的字符的所有排列。</span><br><span class="line">* 如果‘str’是‘abc’，那么输出的串则是abc，acb，bca，cab，cba</span><br><span class="line">* 第二个方法使用递归</span><br><span class="line">* */</span><br><span class="line">public class Deal &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        String str = &quot;abc&quot;;</span><br><span class="line">        permute(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void permute(String str)&#123;  //调用第二个例证并显示String str 中的字符的所有排列</span><br><span class="line">        permute(str.toCharArray(),0,str.length());   //toCharArray() 方法将字符串转换为字符数组。 传进去第二个例证</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //递归</span><br><span class="line">    public static void permute(char[] str, int low, int high)&#123;</span><br><span class="line">        if (low == high - 1)&#123;</span><br><span class="line">            String s = &quot;&quot;;</span><br><span class="line">            for (int i = 0;i &lt; high; i++)&#123;    // 基准情况</span><br><span class="line">                s += str[i];</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i = low;i &lt; high; i++)&#123;</span><br><span class="line">            if (iswasp(str,low,i))&#123;</span><br><span class="line">                swap(str,low,i);                            // 递归</span><br><span class="line">                permute(str, low + 1, high);</span><br><span class="line">                swap(str,low,i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void swap(char[] str, int a, int b) &#123;  //交换字符</span><br><span class="line">        if (str[a] == str[b])&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        char c = str[a];</span><br><span class="line">        str[a] = str[b];</span><br><span class="line">        str[b] = c;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static boolean iswasp(char[] str, int a, int b) &#123;  //查看 a 和 b 是否重复</span><br><span class="line">        for (int i = a; i &lt; b; i++) &#123;</span><br><span class="line">            if (str[i] == str[b]) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h2><p>1.要求：设计一个泛型类Collection，它存储object对象的集合（在数组中），<br>以及该集合当前的大小。提供public方法isEmtpy，makeEmpty,insert,remove,isPresent.<br>方法isPresent(x)当且仅当在集合中存在（由equals定义） 等于x的一个object时返回true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">package Part1;</span><br><span class="line"></span><br><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 要求：设计一个泛型类Collection，它存储object对象的集合（在数组中），</span><br><span class="line"> * 以及该集合当前的大小。提供public方法isEmtpy，makeEmpty,insert,remove,isPresent.</span><br><span class="line"> * 方法isPresent(x)当且仅当在集合中存在（由equals定义） 等于x的一个object时返回true</span><br><span class="line"> *</span><br><span class="line"> *</span><br><span class="line"> * */</span><br><span class="line"></span><br><span class="line">public class Collection&lt;E&gt; &#123;</span><br><span class="line"></span><br><span class="line">    private Object[] elementdata;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int i =0;</span><br><span class="line"></span><br><span class="line">        Collection&lt;String&gt; collection = new Collection&lt;String&gt;();</span><br><span class="line">        Object[] objects = new Object[]&#123;&quot;9&quot;&#125;;</span><br><span class="line">        collection.setElementData(objects);</span><br><span class="line"></span><br><span class="line">        collection.insert(&quot;1&quot;);</span><br><span class="line">        collection.insert(&quot;2&quot;);</span><br><span class="line">        collection.insert(&quot;3&quot;);</span><br><span class="line">        System.err.println(Arrays.toString(collection.getElementdata()));   //输出返回的数组值</span><br><span class="line"></span><br><span class="line">        collection.remove(0);</span><br><span class="line">        System.err.println(Arrays.toString(collection.getElementdata()));</span><br><span class="line">        collection.remove(&quot;2&quot;);</span><br><span class="line">        System.err.println(Arrays.toString(collection.getElementdata()));</span><br><span class="line"></span><br><span class="line">        boolean com = collection.isEmtpy();</span><br><span class="line">        System.err.println(&quot;isEmpty = &quot; + com);</span><br><span class="line"></span><br><span class="line">        boolean com1 = collection.isPresent(&quot;1&quot;);</span><br><span class="line">        System.err.println(&quot;isPresent = &quot; + com1);</span><br><span class="line"></span><br><span class="line">        collection.makeEmpty();</span><br><span class="line">        boolean com2 = collection.isEmtpy();</span><br><span class="line">        System.err.println(&quot;isEmpty = &quot; + com2);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //检查相同的项进行匹配，返回ture</span><br><span class="line">    public boolean isPresent(E objects) &#123;</span><br><span class="line">        if (elementdata == null || objects == null)&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        boolean com  = false;</span><br><span class="line">        for (int i = 0; i &lt; elementdata.length; i++)&#123;</span><br><span class="line">            if (elementdata[i] != null &amp;&amp; objects == elementdata[i])&#123;</span><br><span class="line">                com = true;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return com;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //Collection不为null,但是元素个数为0</span><br><span class="line">    public void makeEmpty() &#123;</span><br><span class="line">        elementdata = new Object[]&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //清空方法</span><br><span class="line">    public boolean isEmtpy() &#123;</span><br><span class="line">        return elementdata.length == 0;    //清空，置0</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //移除方法   数组下标移除</span><br><span class="line">    public void remove(int idnex)&#123;</span><br><span class="line">        if (idnex &lt; 0 || elementdata == null)&#123;    //  递归  基准情况</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        int length = elementdata.length;</span><br><span class="line">        if ((length - 1) &lt; idnex)&#123;     //如果要移除的下标比index小，就返回</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        Object[] temp = new Object[length - 1];</span><br><span class="line">        System.arraycopy(elementdata,0,temp,0,idnex);    //前面相同的就直接复制，直到idnex下标的位置</span><br><span class="line">        System.arraycopy(elementdata,idnex + 1,temp,idnex,length - idnex - 1);</span><br><span class="line">        //不同的则由idnex的位置开始复制，长度为剩下的长度</span><br><span class="line">        elementdata = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //移除方法   数组类型移除</span><br><span class="line">    public void remove(E objects) &#123;</span><br><span class="line">        if (elementdata == null || objects == null)&#123;   //  递归  基准情况</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        int length = elementdata.length;</span><br><span class="line">        for (int i = 0; i &lt; length; i++)&#123;</span><br><span class="line">            if (elementdata[i] != null &amp;&amp; elementdata[i] == objects)&#123;    //循环判断</span><br><span class="line">                Object[] temp = new Object[length - 1];  //长度比elementdata数组少一位</span><br><span class="line">                System.arraycopy(elementdata,0,temp,0,i);  //前面相同的就直接复制，直到i的长度</span><br><span class="line">                System.arraycopy(elementdata,i + 1,temp,i,length - i - 1);    //不同的由i的位置开始复制，长度为剩下的长度</span><br><span class="line">                elementdata = temp;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    //插入方法</span><br><span class="line">    public void insert(E objects) &#123;</span><br><span class="line">        int length = elementdata.length;</span><br><span class="line">        Object[] temp = new Object[length + 1];   //temp数组长度比elementdata数组长一个位</span><br><span class="line">        System.arraycopy(elementdata,0,temp,0,length);</span><br><span class="line">        //它可以实现将一个数组的指定个数元素复制到另一个数组中</span><br><span class="line">        //将elementdata数组从索引为0开始复制到temp数组索引为0的位置上，复制的长度为elementdata数组的长度</span><br><span class="line">        temp[length] = objects;  //插入的字符传进来到length这位</span><br><span class="line">        elementdata = temp;    //temp数组传回去elementdata数组</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void setElementData(Object[] objects) &#123;</span><br><span class="line">        this.elementdata = objects;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Object[] getElementdata() &#123;</span><br><span class="line">        return elementdata;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 
@@ -473,8 +475,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/19/数据结构和算法分析-Part1-1-程序选择问题/" rel="next" title="数据结构和算法分析 - Part1 1.程序选择问题">
-                <i class="fa fa-chevron-left"></i> 数据结构和算法分析 - Part1 1.程序选择问题
+              <a href="/2019/10/16/Java-Web学习-7-JavaBean/" rel="next" title="Java Web学习(7) JavaBean">
+                <i class="fa fa-chevron-left"></i> Java Web学习(7) JavaBean
               </a>
             
           </div>
@@ -482,6 +484,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/19/数据结构和算法分析-Part1-1-程序选择问题/" rel="prev" title="数据结构和算法分析 - Part1 1.程序选择问题">
+                数据结构和算法分析 - Part1 1.程序选择问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
